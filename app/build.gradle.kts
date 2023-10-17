@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "com.mobdeve.s16.chua.andreikevin.dormdinner"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.mobdeve.s16.chua.andreikevin.dormdinner"
