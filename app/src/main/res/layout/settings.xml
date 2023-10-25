@@ -14,10 +14,11 @@
         android:fontFamily="@font/t_ramillas"
         android:text="Settings"
         android:textColor="@color/black"
+        android:layout_marginLeft="16dp"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
