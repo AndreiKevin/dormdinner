@@ -13,20 +13,25 @@ public class recipeData {
     private Integer readyInMinutes;
     private Integer cntLikes;
     private ArrayList<String> recipeInstructions;
-    private ArrayList<ingredientData> recipeIngredients;
+    private ArrayList<ingredientData> recipeIngredientsInPantry;
+    private ArrayList<ingredientData> recipeIngredientsMissing;
+    private boolean isFavorite;
 
     public recipeData(String recipeName, URL recipeSource, String recipeCredits,
-                      Integer recipeBanner, Integer cntIngredientsInPantry, Integer cntIngredientsMissing, Integer cntLikes,
-                      ArrayList<String> recipeInstructions, ArrayList<ingredientData> recipeIngredients) {
+                      Integer recipeBanner, Integer cntIngredientsInPantry, Integer cntIngredientsMissing, Integer readyInMinutes, Integer cntLikes,
+                      ArrayList<String> recipeInstructions, ArrayList<ingredientData> recipeIngredientsInPantry, ArrayList<ingredientData> recipeIngredientsMissing, boolean isFavorite) {
         this.recipeName = recipeName;
         this.recipeSource = recipeSource;
         this.recipeCredits = recipeCredits;
         this.recipeBanner = recipeBanner;
         this.cntIngredientsInPantry = cntIngredientsInPantry;
         this.cntIngredientsMissing = cntIngredientsMissing;
+        this.readyInMinutes = readyInMinutes;
         this.cntLikes = cntLikes;
         this.recipeInstructions = recipeInstructions;
-        this.recipeIngredients = recipeIngredients;
+        this.recipeIngredientsInPantry = recipeIngredientsInPantry;
+        this.recipeIngredientsMissing = recipeIngredientsMissing;
+        this.isFavorite = isFavorite;
     }
 
     public String getRecipeName() {
@@ -53,6 +58,10 @@ public class recipeData {
         return this.cntIngredientsMissing;
     }
 
+    public Integer getReadyInMinutes() {
+        return this.readyInMinutes;
+    }
+
     public Integer getCntLikes() {
         return this.cntLikes;
     }
@@ -61,7 +70,19 @@ public class recipeData {
         return this.recipeInstructions;
     }
 
-    public ArrayList<ingredientData> getRecipeIngredients() {
-        return this.recipeIngredients;
+    public ArrayList<ingredientData> getRecipeIngredientsInPantry() {
+        return this.recipeIngredientsInPantry;
+    }
+
+    public ArrayList<ingredientData> getRecipeIngredientsMissing() {
+        return this.recipeIngredientsMissing;
+    }
+
+    public boolean getIsFavorite() {
+        return this.isFavorite;
+    }
+
+    public void setIsFavorite(boolean isFavorite) {
+        this.isFavorite = isFavorite;
     }
 }

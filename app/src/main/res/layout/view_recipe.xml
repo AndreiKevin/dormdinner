@@ -13,6 +13,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/parentLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -20,7 +21,7 @@
             <TextView
                 android:id="@+id/recipeName"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="100dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
@@ -28,7 +29,7 @@
                 android:fontFamily="@font/t_ramillas"
                 android:text="TextView"
                 android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:textSize="34sp" />
 
             <TextView
                 android:id="@+id/recipeCredits"
@@ -63,7 +64,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@null"
-                    android:src="@drawable/btn_favorite_off" />
+                    android:src="@drawable/btn_favorite_off"
+                    android:onClick="btnFavoriteClicked"/>
 
                 <TextView
                     android:id="@+id/cntLikes"

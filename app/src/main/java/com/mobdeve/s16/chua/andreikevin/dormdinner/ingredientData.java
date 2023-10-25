@@ -10,4 +10,16 @@ public class ingredientData {
         this.ingredientAmt = ingredientAmt;
         this.ingredientImage = ingredientImage;
     }
+
+    public String getIngredientName() {
+        return this.ingredientName;
+    }
+
+    public String getIngredientAmt() {
+        return this.ingredientAmt;
+    }
+
+    public Integer getIngredientImage() {
+        return this.ingredientImage;
+    }
 }

@@ -38,4 +38,11 @@ public class favoriteRecipes extends AppCompatActivity {
             startActivity(goSettings);
         });
     }
+
+    public void sampleRecipeClicked(View v){
+        Intent goSampleRecipe = new Intent(getApplicationContext(), viewRecipe.class);
+        v.setOnClickListener(x -> {
+            startActivity(goSampleRecipe);
+        });
+    }
 }
