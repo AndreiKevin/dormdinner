@@ -1,14 +1,17 @@
 package com.mobdeve.s16.chua.andreikevin.dormdinner;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -75,6 +78,7 @@ public class viewRecipe extends AppCompatActivity {
                                                         45, 17, instructions,
                                                         recipeIngredientsInPantry, recipeIngredientsMissing, false);
             setDataToLayout(sampleRecipe1);
+            listIngredients();
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
@@ -88,6 +92,31 @@ public class viewRecipe extends AppCompatActivity {
         this.cntIngredientsInPantry.setText(sampleRecipe.getCntIngredientsInPantry()+" in pantry");
         this.cntIngredientsMissing.setText(sampleRecipe.getCntIngredientsMissing()+" missing");
         this.readyInMinutes.setText(sampleRecipe.getReadyInMinutes()+" mins");
+    }
+
+    private void listIngredients() {
+        LayoutInflater vi = (LayoutInflater) getLayoutInflater();
+        View listIngredients = vi.inflate(R.layout.list_ingredients, null);
+
+        // fill in any details dynamically here
+        TextView ingredientAmt = (TextView) listIngredients.findViewById(R.id.ingredientAmt);
+        ingredientAmt.setText(sampleRecipe1.getRecipeIngredientsInPantry().get(2).getIngredientAmt());
+        TextView ingredientName = (TextView) listIngredients.findViewById(R.id.ingredientName);
+        ingredientName.setText(sampleRecipe1.getRecipeIngredientsInPantry().get(2).getIngredientName());
+        ImageView ingredientImage = (ImageView) listIngredients.findViewById(R.id.ingredientImage);
+        ingredientImage.setImageResource(sampleRecipe1.getRecipeIngredientsInPantry().get(2).getIngredientImage());
+
+        // insert into main view
+        ViewGroup insertPoint = (ViewGroup) findViewById(R.id.parentLinearLayout);
+        ViewGroup.MarginLayoutParams params = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        Resources r = getResources();
+        int px = (int) TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                20,
+                r.getDisplayMetrics()
+        );
+        params.setMargins(px, 1, px, 1);
+        insertPoint.addView(listIngredients, 5, params);
     }
 
     /* TODO: change logic later on */
