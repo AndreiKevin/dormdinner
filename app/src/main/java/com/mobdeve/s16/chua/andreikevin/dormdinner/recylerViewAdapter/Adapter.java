@@ -31,8 +31,8 @@ public class Adapter extends RecyclerView.Adapter<searchResultsViewHolder> {
     public void onBindViewHolder(@NonNull searchResultsViewHolder holder, int position) {
         holder.pic.setImageResource(items.get(position).getPic());
         holder.recipeName.setText(items.get(position).getRecipeName());
-        /*holder.none.setText(items.get(position).getNone());
-        holder.have.setText(items.get(position).getHave());*/
+        holder.none.setText(Integer.toString(items.get(position).getNone()));
+        holder.have.setText(Integer.toString(items.get(position).getHave()));
     }
 
 

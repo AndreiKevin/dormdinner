@@ -38,23 +38,25 @@
         android:id="@+id/yesAmt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/pic"
-        android:layout_marginTop="15dp"
-        android:text="x"
-        android:textSize="18dp"
         android:layout_below="@id/recipeName"
-        android:textColor="@color/black" />
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@+id/pic"
+        android:fontFamily="@font/palmer_lake"
+        android:text="x"
+        android:textColor="@color/black"
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/noAmt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/yesAmt"
-        android:layout_toEndOf="@+id/pic"
         android:layout_marginTop="2dp"
+        android:layout_toEndOf="@+id/pic"
+        android:fontFamily="@font/palmer_lake"
         android:text="x"
-        android:textSize="18sp"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/holder1"

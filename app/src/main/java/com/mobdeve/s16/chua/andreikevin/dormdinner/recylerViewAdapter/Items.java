@@ -22,7 +22,7 @@ public class Items {
     }
 
     public int getHave() {
-        return have;
+        return this.have;
     }
 
     public void setHave(Integer have) {
@@ -30,7 +30,7 @@ public class Items {
     }
 
     public int getNone() {
-        return none;
+        return this.none;
     }
 
     public void setNone(Integer none) {
