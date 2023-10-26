@@ -73,15 +73,15 @@
         android:layout_width="170dp"
         android:layout_height="32dp"
         android:layout_marginTop="8dp"
-        android:progressBackgroundTint="@color/primary"
-        android:progressTint="@color/primary"
-        android:thumbTint="@color/primary"
+        android:max="10"
+        android:progress="0"
+        android:progressBackgroundTint="@color/pink"
+        android:progressTint="@color/pink"
+        android:thumbTint="@color/pink"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.024"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
-        android:max="10"
-        android:progress="0"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <TextView
         android:id="@+id/sliderValue"
@@ -113,7 +113,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/btnAddAvoidIngredients"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="264dp"
