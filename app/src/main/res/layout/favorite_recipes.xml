@@ -118,7 +118,8 @@
         app:layout_constraintHorizontal_bias="0.932"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/settings" />
+        app:srcCompat="@drawable/settings"
+        android:onClick="settingsClicked"/>
 
     <TextView
         android:id="@+id/textView3"
