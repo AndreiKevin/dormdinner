@@ -1,27 +1,64 @@
 package com.mobdeve.s16.chua.andreikevin.dormdinner;
 
+import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class pantry extends AppCompatActivity {
-    private ImageButton favs_on_btn, settings;
+    private ImageButton favs_on_btn, settings, btnAddIngredients;
+    EditText editAddIngredients;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pantry);
 
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         favs_on_btn = findViewById(R.id.favoriteBtn_off);
         favsClicked(favs_on_btn);
 
         settings = findViewById(R.id.settings);
         settingsClicked(settings);
+
+        this.btnAddIngredients = (ImageButton) findViewById(R.id.btnAddIngredients);
+        this.editAddIngredients = (EditText) findViewById(R.id.editAddIngredients);
+
+        btnAddIngredients.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                final View addView = layoutInflater.inflate(R.layout.new_ingredient_pantry, null);
+
+                final TextView text = (TextView) addView.findViewById(R.id.ingredientPantry);
+                text.setText(editAddIngredients.getText().toString());
+
+                ImageButton delete_ingredient = (ImageButton) addView.findViewById(R.id.btnTrashPantry);
+                final View.OnClickListener thisListener = new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ((LinearLayout) addView.getParent()).removeView(addView);
+                    }
+                };
+
+                delete_ingredient.setOnClickListener(thisListener);
+                /* TODO: add text entered checker logic */
+                ((LinearLayout) findViewById(R.id.addIngredientsParent)).addView(addView);
+                editAddIngredients.setText("");
+            }
+        });
 
     }
 

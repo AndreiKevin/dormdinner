@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="5dp">
+    android:layout_height="50dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="230dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
-        app:cardBackgroundColor="@color/pink"
+        app:cardBackgroundColor="@color/bg_secondary"
         app:cardCornerRadius="10dp">
 
         <LinearLayout
@@ -21,8 +18,8 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/ingredient"
-                android:layout_width="179dp"
+                android:id="@+id/ingredientPantry"
+                android:layout_width="180dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="5dp"
                 android:layout_weight="1"
@@ -32,13 +29,11 @@
                 android:textColor="@color/black" />
 
             <ImageButton
-                android:id="@+id/btnTrash"
+                android:id="@+id/btnTrashPantry"
                 android:layout_width="45dp"
                 android:layout_height="match_parent"
                 android:background="@null"
                 android:src="@drawable/trash_btn" />
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>
-
 </RelativeLayout>

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -52,12 +51,12 @@ public class settings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                final View addView = layoutInflater.inflate(R.layout.new_ingredient, null);
+                final View addView = layoutInflater.inflate(R.layout.new_ingredient_settings, null);
 
-                final TextView text = (TextView) addView.findViewById(R.id.ingredient);
+                final TextView text = (TextView) addView.findViewById(R.id.ingredientSettings);
                 text.setText(editAddAvoidIngredients.getText().toString());
 
-                ImageButton delete_ingredient = (ImageButton) addView.findViewById(R.id.btnTrash);
+                ImageButton delete_ingredient = (ImageButton) addView.findViewById(R.id.btnTrashSettings);
                 final View.OnClickListener thisListener = new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
