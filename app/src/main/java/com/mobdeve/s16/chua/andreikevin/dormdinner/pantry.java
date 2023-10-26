@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -13,10 +14,11 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class pantry extends AppCompatActivity {
-    private ImageButton favs_on_btn, settings, btnAddIngredients;
+    private ImageButton favs_on_btn, settings, search, btnAddIngredients;
     EditText editAddIngredients;
 
 
@@ -32,6 +34,9 @@ public class pantry extends AppCompatActivity {
 
         settings = findViewById(R.id.settings);
         settingsClicked(settings);
+
+        search = findViewById(R.id.search_btn_pantry);
+        searchClicked(search);
 
         this.btnAddIngredients = (ImageButton) findViewById(R.id.btnAddIngredients);
         this.editAddIngredients = (EditText) findViewById(R.id.editAddIngredients);
@@ -74,6 +79,13 @@ public class pantry extends AppCompatActivity {
         Intent goSettings = new Intent(getApplicationContext(), settings.class);
         v.setOnClickListener(x -> {
             startActivity(goSettings);
+        });
+    }
+
+    public void searchClicked(View v){
+        Intent goSearchResults = new Intent(getApplicationContext(), searchResult.class);
+        v.setOnClickListener(x -> {
+            startActivity(goSearchResults);
         });
     }
 }
