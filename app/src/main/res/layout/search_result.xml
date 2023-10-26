@@ -22,6 +22,14 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:overScrollMode="never" />
+
     <TextView
         android:id="@+id/num_results"
         android:layout_width="77dp"
@@ -97,10 +105,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/search_bar" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="375dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="90dp" />
 </RelativeLayout>

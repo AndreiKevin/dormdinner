@@ -27,6 +27,12 @@ public class searchResult extends AppCompatActivity {
 
         items.add(new Items(R.drawable.roasted_chicken, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
         items.add(new Items(R.drawable.chicken_casserole, 0, 1, "Chicken and Apple Stuffing Casserole"));
+        items.add(new Items(R.drawable.roasted_chicken, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
+        items.add(new Items(R.drawable.chicken_casserole, 0, 1, "Chicken and Apple Stuffing Casserole"));
+        items.add(new Items(R.drawable.roasted_chicken, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
+        items.add(new Items(R.drawable.chicken_casserole, 0, 1, "Chicken and Apple Stuffing Casserole"));
+        items.add(new Items(R.drawable.roasted_chicken, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
+        items.add(new Items(R.drawable.chicken_casserole, 0, 1, "Chicken and Apple Stuffing Casserole"));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new Adapter(getApplicationContext(), items));
