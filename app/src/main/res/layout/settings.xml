@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EDF0EB">
+    android:background="@color/bg_primary">
 
     <TextView
         android:id="@+id/textView"
@@ -56,7 +56,7 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="188dp"
+        android:layout_marginTop="208dp"
         android:fontFamily="@font/t_ramillas"
         android:text="Avoid Ingredients"
         android:textColor="@color/black"
@@ -68,26 +68,32 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <SeekBar
-        android:id="@+id/slider"
+        android:id="@+id/sliderSettings"
         style="@android:style/Widget.DeviceDefault.Light.SeekBar"
         android:layout_width="170dp"
         android:layout_height="32dp"
         android:layout_marginTop="8dp"
+        android:progressBackgroundTint="@color/primary"
+        android:progressTint="@color/primary"
+        android:thumbTint="@color/primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.024"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        android:max="10"
+        android:progress="0"/>
 
     <TextView
         android:id="@+id/sliderValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
-        android:textSize="12sp"
+        android:layout_marginTop="8dp"
+        android:text="0"
+        android:textColor="@color/black"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/slider"
+        app:layout_constraintStart_toEndOf="@+id/sliderSettings"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <TextView
@@ -95,7 +101,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="172dp"
+        android:layout_marginTop="192dp"
         android:layout_marginEnd="190dp"
         android:fontFamily="@font/palmer_lake"
         android:text="WE DON'T LIKE THESE..."
@@ -110,10 +116,10 @@
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="192dp"
+        android:layout_marginTop="264dp"
         android:background="#00FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintHorizontal_bias="0.041"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/add_ingredient_btn" />
