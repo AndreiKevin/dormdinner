@@ -23,14 +23,14 @@ public class searchResult extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.searchResultRecycler);
 
-        items.add(new Items(R.drawable.roasted_chicken, R.drawable.favs_off, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
-        items.add(new Items(R.drawable.chicken_casserole, R.drawable.favs_off, 0, 1, "Chicken and Apple Stuffing Casserole"));
-        items.add(new Items(R.drawable.roasted_chicken, R.drawable.favs_off, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
-        items.add(new Items(R.drawable.chicken_casserole, R.drawable.favs_off, 0, 1, "Chicken and Apple Stuffing Casserole"));
-        items.add(new Items(R.drawable.roasted_chicken, R.drawable.favs_off, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
-        items.add(new Items(R.drawable.chicken_casserole, R.drawable.favs_off, 0, 1, "Chicken and Apple Stuffing Casserole"));
-        items.add(new Items(R.drawable.roasted_chicken, R.drawable.favs_off, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
-        items.add(new Items(R.drawable.chicken_casserole, R.drawable.favs_off, 0, 1, "Chicken and Apple Stuffing Casserole"));
+        items.add(new Items(R.drawable.roasted_chicken, false, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
+        items.add(new Items(R.drawable.chicken_casserole, false, 0, 1, "Chicken and Apple Stuffing Casserole"));
+        items.add(new Items(R.drawable.roasted_chicken, false, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
+        items.add(new Items(R.drawable.chicken_casserole, false, 0, 1, "Chicken and Apple Stuffing Casserole"));
+        items.add(new Items(R.drawable.roasted_chicken, false, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
+        items.add(new Items(R.drawable.chicken_casserole, false, 0, 1, "Chicken and Apple Stuffing Casserole"));
+        items.add(new Items(R.drawable.roasted_chicken, false, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
+        items.add(new Items(R.drawable.chicken_casserole, false, 0, 1, "Chicken and Apple Stuffing Casserole"));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new searchResultsAdapter(getApplicationContext(), items));

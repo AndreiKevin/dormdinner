@@ -3,6 +3,7 @@ package com.mobdeve.s16.chua.andreikevin.dormdinner.recylerViewAdapter;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,7 +13,7 @@ import com.mobdeve.s16.chua.andreikevin.dormdinner.R;
 public class searchResultsViewHolder extends RecyclerView.ViewHolder {
 
     ImageView pic;
-    ImageView pic2;
+    ToggleButton pic2;
     TextView recipeName;
     TextView have;
     TextView none;

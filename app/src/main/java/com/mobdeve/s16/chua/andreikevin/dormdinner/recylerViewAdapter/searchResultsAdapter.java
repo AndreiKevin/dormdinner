@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -36,27 +37,45 @@ public class searchResultsAdapter extends RecyclerView.Adapter<searchResultsView
 
     @Override
     public void onBindViewHolder(@NonNull searchResultsViewHolder holder, int position) {
+        Items itemlist = items.get(position);
+        holder.pic2.setChecked(items.get(position).isToggled());
+        holder.pic2.setOnCheckedChangeListener(null);
+        holder.pic2.setChecked(itemlist.isToggled());
+        holder.pic2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                itemlist.setToggled(isChecked);
+                notifyDataSetChanged();
+            }
+        });
+        holder.pic2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {notifyDataSetChanged();
+            }
+        });
+
         holder.pic.setImageResource(items.get(position).getPic());
-        holder.pic2.setImageResource(items.get(position).getPic2());
         holder.recipeName.setText(items.get(position).getRecipeName());
         holder.none.setText(Integer.toString(items.get(position).getNone()));
         holder.have.setText(Integer.toString(items.get(position).getHave()));
 
-        dbHandler = new DBHandler(this.context);
+        /*dbHandler = new DBHandler(this.context);
 
         holder.pic2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //TODO Experimental code for DB
                 SQLiteDatabase db = dbHandler.getWritableDatabase();
                 Cursor cursor = db.rawQuery("Select * from favoriteRecipes where recipe_name = ?", new String[]{items.get(holder.getAdapterPosition()).getRecipeName()});
                 if (cursor.getCount() > 0){
                     //Toast.makeText(context, "This recipe is already in your bookmark!", Toast.LENGTH_SHORT).show();
                 } else {
-                    dbHandler.addNewFav(items.get(holder.getAdapterPosition()).getRecipeName()/*, items.get(holder.getAdapterPosition()).getPic()*/);
+                    dbHandler.addNewFav(items.get(holder.getAdapterPosition()).getRecipeName()/*, items.get(holder.getAdapterPosition()).getPic()*//*);
                     Toast.makeText(context, "Added to bookmarked", Toast.LENGTH_SHORT).show();
                 }
+
             }
-        });
+        });*/
     }
 
 
