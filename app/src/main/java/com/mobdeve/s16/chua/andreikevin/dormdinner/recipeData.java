@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class recipeData {
+    private String id;
     private String recipeName;
     private URL recipeSource; /*TODO: change data type if need be*/
     private String recipeCredits;
@@ -17,9 +18,10 @@ public class recipeData {
     private ArrayList<ingredientData> recipeIngredientsMissing;
     private boolean isFavorite;
 
-    public recipeData(String recipeName, URL recipeSource, String recipeCredits,
+    public recipeData(String id, String recipeName, URL recipeSource, String recipeCredits,
                       Integer recipeBanner, Integer cntIngredientsInPantry, Integer cntIngredientsMissing, Integer readyInMinutes, Integer cntLikes,
                       ArrayList<String> recipeInstructions, ArrayList<ingredientData> recipeIngredientsInPantry, ArrayList<ingredientData> recipeIngredientsMissing, boolean isFavorite) {
+        this.id = id;
         this.recipeName = recipeName;
         this.recipeSource = recipeSource;
         this.recipeCredits = recipeCredits;

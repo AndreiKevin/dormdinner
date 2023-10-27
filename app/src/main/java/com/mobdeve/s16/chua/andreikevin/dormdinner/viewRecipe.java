@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.MissingResourceException;
 
 public class viewRecipe extends AppCompatActivity {
 
@@ -46,6 +47,12 @@ public class viewRecipe extends AppCompatActivity {
 
 
         // In MCO3 we will do recipeData = get from Intent() instead
+        if(getIntent().hasExtra("itemId")) {
+            String itemId = getIntent().getStringExtra("itemId");
+            // Now you have itemId. Continue doing your API call and other works
+        }else {
+            throw new RuntimeException("Item/Recipe has no ID");
+        }
 
         /* initialize missing and in-pantry ingredients of sample recipe 1 */
         ArrayList<ingredientData> recipeIngredientsInPantry = new ArrayList<ingredientData>();
@@ -75,7 +82,7 @@ public class viewRecipe extends AppCompatActivity {
 
         /* initialize sample recipe 1 */
         try {
-            recipeData = new recipeData("Baked Chicken Thighs with Apples and Onions",
+            recipeData = new recipeData("1", "Baked Chicken Thighs with Apples and Onions",
                                                         new URL("https://www.allrecipes.com/cook/fabeveryday"),
                                                         "fabeveryday",
                                                         R.drawable.sample_recipe_1,

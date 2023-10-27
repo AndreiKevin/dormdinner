@@ -1,12 +1,14 @@
 package com.mobdeve.s16.chua.andreikevin.dormdinner.recylerViewAdapter;
 
 public class Items {
+    String id;
     int pic;
     int none;
     int have;
     String recipeName;
 
-    public Items(int pic, Integer yesAmt, Integer noAmt, String recipeName) {
+    public Items(String id, int pic, Integer yesAmt, Integer noAmt, String recipeName) {
+        this.id = id;
         this.pic = pic;
         this.have = yesAmt;
         this.none = noAmt;
@@ -15,6 +17,10 @@ public class Items {
 
     public int getPic() {
         return pic;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public void setPic(int pic) {

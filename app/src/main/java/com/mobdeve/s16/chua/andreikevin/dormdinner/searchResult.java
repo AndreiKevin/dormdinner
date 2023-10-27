@@ -25,16 +25,23 @@ public class searchResult extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
 
-        items.add(new Items(R.drawable.roasted_chicken, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
-        items.add(new Items(R.drawable.chicken_casserole, 0, 1, "Chicken and Apple Stuffing Casserole"));
-        items.add(new Items(R.drawable.roasted_chicken, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
-        items.add(new Items(R.drawable.chicken_casserole, 0, 1, "Chicken and Apple Stuffing Casserole"));
-        items.add(new Items(R.drawable.roasted_chicken, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
-        items.add(new Items(R.drawable.chicken_casserole, 0, 1, "Chicken and Apple Stuffing Casserole"));
-        items.add(new Items(R.drawable.roasted_chicken, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
-        items.add(new Items(R.drawable.chicken_casserole, 0, 1, "Chicken and Apple Stuffing Casserole"));
+        items.add(new Items("1", R.drawable.roasted_chicken, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
+        items.add(new Items("2", R.drawable.chicken_casserole, 0, 1, "Chicken and Apple Stuffing Casserole"));
+        items.add(new Items("3", R.drawable.roasted_chicken, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
+        items.add(new Items("4", R.drawable.chicken_casserole, 0, 1, "Chicken and Apple Stuffing Casserole"));
+        items.add(new Items("5", R.drawable.roasted_chicken, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
+        items.add(new Items("6", R.drawable.chicken_casserole, 0, 1, "Chicken and Apple Stuffing Casserole"));
+        items.add(new Items("7", R.drawable.roasted_chicken, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
+        items.add(new Items("8", R.drawable.chicken_casserole, 0, 1, "Chicken and Apple Stuffing Casserole"));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new Adapter(getApplicationContext(), items));
+        Adapter adapter = new Adapter(this, items, position -> {
+            Items item = items.get(position);
+            Intent intent = new Intent(this, viewRecipe.class);
+            intent.putExtra("itemId", item.getId());
+            startActivity(intent);
+        });
+        recyclerView.setAdapter(adapter);
+
     }
 }

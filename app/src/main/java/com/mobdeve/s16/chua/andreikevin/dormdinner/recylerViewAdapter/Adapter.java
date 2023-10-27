@@ -15,10 +15,16 @@ public class Adapter extends RecyclerView.Adapter<searchResultsViewHolder> {
 
     Context context;
     List<Items> items;
+    private ItemClickListener itemClickListener;
 
-    public Adapter(Context context, List<Items> items) {
+    public interface ItemClickListener {
+        void onItemClicked(int position);
+    }
+
+    public Adapter(Context context, List<Items> items, ItemClickListener itemClickListener) {
         this.context = context;
         this.items = items;
+        this.itemClickListener = itemClickListener;
     }
 
     @NonNull
@@ -33,6 +39,10 @@ public class Adapter extends RecyclerView.Adapter<searchResultsViewHolder> {
         holder.recipeName.setText(items.get(position).getRecipeName());
         holder.none.setText(Integer.toString(items.get(position).getNone()));
         holder.have.setText(Integer.toString(items.get(position).getHave()));
+
+        // Listener to navigate to recipe page
+        holder.itemView.setOnClickListener(v -> itemClickListener.onItemClicked(position));
+
     }
 
 
