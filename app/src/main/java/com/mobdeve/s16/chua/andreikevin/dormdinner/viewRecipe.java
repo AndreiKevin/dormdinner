@@ -87,6 +87,7 @@ public class viewRecipe extends AppCompatActivity {
             setDataToLayout(recipeData);
             showPantryIngredients();
             showMissingIngredients();
+            showInstructions();
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
@@ -109,28 +110,21 @@ public class viewRecipe extends AppCompatActivity {
     private void IngredientsLayouter(ArrayList<ingredientData> ingredientList, ViewGroup parent, int insertAfterChildID) {
         // Util function to generate the views for pantry and missing ingredients
         // get index of the target child
-        int index = 0;
-        for (int i=0; i < parent.getChildCount(); i++) {
-            if (parent.getChildAt(i).getId() == insertAfterChildID) {
-                index = i;
-                index++;
-                break;
-            }
-        }
+        int index = getIndexAfterChild(parent, insertAfterChildID);
 
         LayoutInflater vi = (LayoutInflater) getLayoutInflater();
 
         for (ingredientData ingredient : ingredientList) {
-            View listIngredients = vi.inflate(R.layout.list_ingredients, null);
+            View ingredient_view = vi.inflate(R.layout.list_ingredients, null);
 
-            TextView ingredientAmt = (TextView) listIngredients.findViewById(R.id.ingredientAmt);
+            TextView ingredientAmt = (TextView) ingredient_view.findViewById(R.id.ingredientAmt);
             ingredientAmt.setText(ingredient.getIngredientAmt() + " ");
-            TextView ingredientName = (TextView) listIngredients.findViewById(R.id.ingredientName);
+            TextView ingredientName = (TextView) ingredient_view.findViewById(R.id.ingredientName);
             ingredientName.setText(ingredient.getIngredientName());
             // Load image using Glide to downscale for memory efficiency
             Glide.with(this.getApplicationContext())
                     .load(ingredient.getIngredientImage())
-                    .into((ImageView) listIngredients.findViewById(R.id.ingredientImage));
+                    .into((ImageView) ingredient_view.findViewById(R.id.ingredientImage));
 
             // Need to make params for the ViewGroup programatically since the parent properties don't follow
             ViewGroup.MarginLayoutParams params = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -141,9 +135,22 @@ public class viewRecipe extends AppCompatActivity {
                     r.getDisplayMetrics()
             );
             params.setMargins(px, 0, px, 26);
-            parent.addView(listIngredients, index, params);
+            parent.addView(ingredient_view, index, params);
             index++;
         }
+    }
+
+    private int getIndexAfterChild(ViewGroup parent, int insertAfterChildID) {
+        // Util function to know where to insert after a specific child view of a parent view group
+        int index = 0;
+        for (int i=0; i < parent.getChildCount(); i++) {
+            if (parent.getChildAt(i).getId() == insertAfterChildID) {
+                index = i;
+                index++;
+                return index;
+            }
+        }
+        throw new RuntimeException("Index of child cannot be found. This should never happen.");
     }
 
     private void showPantryIngredients() {
@@ -154,10 +161,33 @@ public class viewRecipe extends AppCompatActivity {
         IngredientsLayouter(recipeData.getRecipeIngredientsMissing(), findViewById(R.id.parentLinearLayout), R.id.missingIngredientsLabel);
     }
 
-    private void InstructionsLayouter(int stepCnt, String instruction) {
+    private void showInstructions() {
         // Util function to insert instruction views
+        ViewGroup parent = findViewById(R.id.parentLinearLayout);
 
+        LayoutInflater vi = (LayoutInflater) getLayoutInflater();
 
+        int stepCnt = 0;
+        for (String instruction : recipeData.getRecipeInstructions()) {
+            View instruction_view = vi.inflate(R.layout.list_instructions, null);
+
+            TextView step_count = (TextView) instruction_view.findViewById(R.id.step_count);
+            step_count.setText(Integer.toString(stepCnt));
+            TextView step_description = (TextView) instruction_view.findViewById(R.id.step_description);
+            step_description.setText(instruction);
+
+            // Need to make params for the ViewGroup programatically since the parent properties don't follow
+            ViewGroup.MarginLayoutParams params = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            Resources r = getResources();
+            /*int px = (int) TypedValue.applyDimension(
+                    TypedValue.COMPLEX_UNIT_DIP,
+                    20,
+                    r.getDisplayMetrics()
+            );*/
+            params.setMargins(0, 0, 0, 30);
+            parent.addView(instruction_view, -1, params);
+            stepCnt++;
+        }
     }
 
     /* TODO: change logic later on */
