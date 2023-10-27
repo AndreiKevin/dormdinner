@@ -14,6 +14,9 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -79,22 +82,15 @@ public class viewRecipe extends AppCompatActivity {
                                                         recipeIngredientsInPantry.size(), recipeIngredientsMissing.size(),
                                                         45, 17, instructions,
                                                         recipeIngredientsInPantry, recipeIngredientsMissing, false);
-
-            // Load the recipe
             setDataToLayout(sampleRecipe1);
-
-            // The available ingredient list will be shown as recycler view
-            RecyclerView ingredientsRecycler = findViewById(R.id.ingredientsRecycler);
-            ingredientsRecycler.setHasFixedSize(true);
-
-            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-            ingredientsRecycler.setLayoutManager(layoutManager);
-
-            IngredientsAdapter mAdapter = new IngredientsAdapter(sampleRecipe1.getRecipeIngredientsInPantry());
-            ingredientsRecycler.setAdapter(mAdapter);
+            listIngredients();
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
+        // END OF SAMPLE GENERATION
+
+
+
     }
 
     private void setDataToLayout(recipeData sampleRecipe) {
@@ -105,6 +101,35 @@ public class viewRecipe extends AppCompatActivity {
         this.cntIngredientsInPantry.setText(sampleRecipe.getCntIngredientsInPantry()+" in pantry");
         this.cntIngredientsMissing.setText(sampleRecipe.getCntIngredientsMissing()+" missing");
         this.readyInMinutes.setText(sampleRecipe.getReadyInMinutes()+" mins");
+    }
+
+    private void listIngredients() {
+        LayoutInflater vi = (LayoutInflater) getLayoutInflater();
+        ViewGroup insertPoint = (ViewGroup) findViewById(R.id.parentLinearLayout);
+
+        for (ingredientData ingredient : sampleRecipe1.getRecipeIngredientsInPantry()) {
+            View listIngredients = vi.inflate(R.layout.list_ingredients, null);
+
+            TextView ingredientAmt = (TextView) listIngredients.findViewById(R.id.ingredientAmt);
+            ingredientAmt.setText(ingredient.getIngredientAmt() + " ");
+            TextView ingredientName = (TextView) listIngredients.findViewById(R.id.ingredientName);
+            ingredientName.setText(ingredient.getIngredientName());
+            // Load image using Glide to downscale for memory efficiency
+            Glide.with(this.getApplicationContext())
+                    .load(ingredient.getIngredientImage())
+                    .into((ImageView) listIngredients.findViewById(R.id.ingredientImage));
+
+            // Need to make params for the ViewGroup programatically since the parent properties don't follow
+            ViewGroup.MarginLayoutParams params = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            Resources r = getResources();
+            int px = (int) TypedValue.applyDimension(
+                    TypedValue.COMPLEX_UNIT_DIP,
+                    20,
+                    r.getDisplayMetrics()
+            );
+            params.setMargins(px, 0, px, 20);
+            insertPoint.addView(listIngredients, -1, params);
+        }
     }
 
 
