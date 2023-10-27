@@ -88,7 +88,7 @@ public class viewRecipe extends AppCompatActivity {
         this.recipeName.setText(sampleRecipe.getRecipeName());
         this.recipeCredits.setText(sampleRecipe.getRecipeCredits());
         this.recipeBanner.setImageResource(sampleRecipe.getRecipeBanner());
-        this.cntLikes.setText(" • "+sampleRecipe.getCntLikes()+" likes");
+        this.cntLikes.setText(sampleRecipe.getCntLikes()+" likes");
         this.cntIngredientsInPantry.setText(sampleRecipe.getCntIngredientsInPantry()+" in pantry");
         this.cntIngredientsMissing.setText(sampleRecipe.getCntIngredientsMissing()+" missing");
         this.readyInMinutes.setText(sampleRecipe.getReadyInMinutes()+" mins");
