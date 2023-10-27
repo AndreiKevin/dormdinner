@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobdeve.s16.chua.andreikevin.dormdinner.R;
+import com.mobdeve.s16.chua.andreikevin.dormdinner.database.DBHandler;
 
 import java.util.List;
 
@@ -17,6 +18,8 @@ public class searchResultsAdapter extends RecyclerView.Adapter<searchResultsView
 
     Context context;
     List<Items> items;
+
+    DBHandler dbHandler;
 
     public searchResultsAdapter(Context context, List<Items> items) {
         this.context = context;
@@ -37,10 +40,12 @@ public class searchResultsAdapter extends RecyclerView.Adapter<searchResultsView
         holder.none.setText(Integer.toString(items.get(position).getNone()));
         holder.have.setText(Integer.toString(items.get(position).getHave()));
 
+        dbHandler = new DBHandler(this.context);
+
         holder.pic2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                dbHandler.addNewFav(items.get(holder.getAdapterPosition()).getRecipeName()/*, items.get(holder.getAdapterPosition()).getPic()*/);
                 Toast.makeText(context, "Added to bookmarked", Toast.LENGTH_SHORT).show();
             }
         });
