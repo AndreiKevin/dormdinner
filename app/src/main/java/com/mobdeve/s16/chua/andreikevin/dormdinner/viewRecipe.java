@@ -1,6 +1,8 @@
 package com.mobdeve.s16.chua.andreikevin.dormdinner;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -77,8 +79,19 @@ public class viewRecipe extends AppCompatActivity {
                                                         recipeIngredientsInPantry.size(), recipeIngredientsMissing.size(),
                                                         45, 17, instructions,
                                                         recipeIngredientsInPantry, recipeIngredientsMissing, false);
+
+            // Load the recipe
             setDataToLayout(sampleRecipe1);
-            listIngredients();
+
+            // The available ingredient list will be shown as recycler view
+            RecyclerView ingredientsRecycler = findViewById(R.id.ingredientsRecycler);
+            ingredientsRecycler.setHasFixedSize(true);
+
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+            ingredientsRecycler.setLayoutManager(layoutManager);
+
+            IngredientsAdapter mAdapter = new IngredientsAdapter(sampleRecipe1.getRecipeIngredientsInPantry());
+            ingredientsRecycler.setAdapter(mAdapter);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
@@ -94,30 +107,6 @@ public class viewRecipe extends AppCompatActivity {
         this.readyInMinutes.setText(sampleRecipe.getReadyInMinutes()+" mins");
     }
 
-    private void listIngredients() {
-        LayoutInflater vi = (LayoutInflater) getLayoutInflater();
-        View listIngredients = vi.inflate(R.layout.list_ingredients, null);
-
-        // fill in any details dynamically here
-        TextView ingredientAmt = (TextView) listIngredients.findViewById(R.id.ingredientAmt);
-        ingredientAmt.setText(sampleRecipe1.getRecipeIngredientsInPantry().get(2).getIngredientAmt() + " ");
-        TextView ingredientName = (TextView) listIngredients.findViewById(R.id.ingredientName);
-        ingredientName.setText(sampleRecipe1.getRecipeIngredientsInPantry().get(2).getIngredientName());
-        ImageView ingredientImage = (ImageView) listIngredients.findViewById(R.id.ingredientImage);
-        ingredientImage.setImageResource(sampleRecipe1.getRecipeIngredientsInPantry().get(2).getIngredientImage());
-
-        // insert into main view
-        ViewGroup insertPoint = (ViewGroup) findViewById(R.id.parentLinearLayout);
-        ViewGroup.MarginLayoutParams params = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        Resources r = getResources();
-        int px = (int) TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP,
-                20,
-                r.getDisplayMetrics()
-        );
-        params.setMargins(px, 1, px, 1);
-        insertPoint.addView(listIngredients, -1, params);
-    }
 
     /* TODO: change logic later on */
     public void btnFavoriteClicked(View v) {
