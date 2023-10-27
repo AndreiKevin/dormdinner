@@ -6,6 +6,10 @@ android {
     namespace = "com.mobdeve.s16.chua.andreikevin.dormdinner"
     compileSdk = 34
 
+    buildFeatures {
+        buildConfig = true
+    }
+    
     defaultConfig {
         applicationId = "com.mobdeve.s16.chua.andreikevin.dormdinner"
         minSdk = 24
