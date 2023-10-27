@@ -22,7 +22,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="452dp"
-        android:text="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.087"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +43,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/favsRecycler"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="665dp"
         android:layout_centerHorizontal="true"
         android:overScrollMode="never"
         app:layout_constraintEnd_toEndOf="parent"
