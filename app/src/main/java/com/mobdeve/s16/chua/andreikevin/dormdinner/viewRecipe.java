@@ -1,10 +1,7 @@
 package com.mobdeve.s16.chua.andreikevin.dormdinner;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.TypedValue;
@@ -32,7 +29,7 @@ public class viewRecipe extends AppCompatActivity {
     TextView readyInMinutes;
     ImageButton btnFavorite;
     /* TODO:change logic later on */
-    recipeData sampleRecipe1;
+    recipeData recipeData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +43,9 @@ public class viewRecipe extends AppCompatActivity {
         this.cntIngredientsMissing = (TextView) findViewById(R.id.cntIngredientsMissing);
         this.readyInMinutes = (TextView) findViewById(R.id.readyInMinutes);
         this.btnFavorite = (ImageButton) findViewById(R.id.btnFavorite);
+
+
+        // In MCO3 we will do recipeData = get from Intent() instead
 
         /* initialize missing and in-pantry ingredients of sample recipe 1 */
         ArrayList<ingredientData> recipeIngredientsInPantry = new ArrayList<ingredientData>();
@@ -75,15 +75,18 @@ public class viewRecipe extends AppCompatActivity {
 
         /* initialize sample recipe 1 */
         try {
-            sampleRecipe1 = new recipeData("Baked Chicken Thighs with Apples and Onions",
+            recipeData = new recipeData("Baked Chicken Thighs with Apples and Onions",
                                                         new URL("https://www.allrecipes.com/cook/fabeveryday"),
                                                         "fabeveryday",
                                                         R.drawable.sample_recipe_1,
                                                         recipeIngredientsInPantry.size(), recipeIngredientsMissing.size(),
                                                         45, 17, instructions,
                                                         recipeIngredientsInPantry, recipeIngredientsMissing, false);
-            setDataToLayout(sampleRecipe1);
-            listIngredients();
+
+            // Start of calls that are sample generation independent
+            setDataToLayout(recipeData);
+            showPantryIngredients();
+            showMissingIngredients();
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
@@ -103,11 +106,21 @@ public class viewRecipe extends AppCompatActivity {
         this.readyInMinutes.setText(sampleRecipe.getReadyInMinutes()+" mins");
     }
 
-    private void listIngredients() {
-        LayoutInflater vi = (LayoutInflater) getLayoutInflater();
-        ViewGroup insertPoint = (ViewGroup) findViewById(R.id.parentLinearLayout);
+    private void IngredientsLayouter(ArrayList<ingredientData> ingredientList, ViewGroup parent, int insertAfterChildID) {
+        // Util function to generate the views for pantry and missing ingredients
+        // get index of the target child
+        int index = 0;
+        for (int i=0; i < parent.getChildCount(); i++) {
+            if (parent.getChildAt(i).getId() == insertAfterChildID) {
+                index = i;
+                index++;
+                break;
+            }
+        }
 
-        for (ingredientData ingredient : sampleRecipe1.getRecipeIngredientsInPantry()) {
+        LayoutInflater vi = (LayoutInflater) getLayoutInflater();
+
+        for (ingredientData ingredient : ingredientList) {
             View listIngredients = vi.inflate(R.layout.list_ingredients, null);
 
             TextView ingredientAmt = (TextView) listIngredients.findViewById(R.id.ingredientAmt);
@@ -127,20 +140,34 @@ public class viewRecipe extends AppCompatActivity {
                     20,
                     r.getDisplayMetrics()
             );
-            params.setMargins(px, 0, px, 20);
-            insertPoint.addView(listIngredients, -1, params);
+            params.setMargins(px, 0, px, 26);
+            parent.addView(listIngredients, index, params);
+            index++;
         }
     }
 
+    private void showPantryIngredients() {
+        IngredientsLayouter(recipeData.getRecipeIngredientsInPantry(), findViewById(R.id.parentLinearLayout), R.id.pantryIngredientsLabel);
+    }
+
+    private void showMissingIngredients() {
+        IngredientsLayouter(recipeData.getRecipeIngredientsMissing(), findViewById(R.id.parentLinearLayout), R.id.missingIngredientsLabel);
+    }
+
+    private void InstructionsLayouter(int stepCnt, String instruction) {
+        // Util function to insert instruction views
+
+
+    }
 
     /* TODO: change logic later on */
     public void btnFavoriteClicked(View v) {
-        if (sampleRecipe1.getIsFavorite()) {
-            sampleRecipe1.setIsFavorite(false);
+        if (recipeData.getIsFavorite()) {
+            recipeData.setIsFavorite(false);
             btnFavorite.setImageResource(R.drawable.btn_favorite_off);
         }
         else {
-            sampleRecipe1.setIsFavorite(true);
+            recipeData.setIsFavorite(true);
             btnFavorite.setImageResource(R.drawable.btn_favorite_on);
         }
     }
