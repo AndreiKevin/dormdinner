@@ -100,7 +100,7 @@ public class viewRecipe extends AppCompatActivity {
 
         // fill in any details dynamically here
         TextView ingredientAmt = (TextView) listIngredients.findViewById(R.id.ingredientAmt);
-        ingredientAmt.setText(sampleRecipe1.getRecipeIngredientsInPantry().get(2).getIngredientAmt());
+        ingredientAmt.setText(sampleRecipe1.getRecipeIngredientsInPantry().get(2).getIngredientAmt() + " ");
         TextView ingredientName = (TextView) listIngredients.findViewById(R.id.ingredientName);
         ingredientName.setText(sampleRecipe1.getRecipeIngredientsInPantry().get(2).getIngredientName());
         ImageView ingredientImage = (ImageView) listIngredients.findViewById(R.id.ingredientImage);
@@ -116,7 +116,7 @@ public class viewRecipe extends AppCompatActivity {
                 r.getDisplayMetrics()
         );
         params.setMargins(px, 1, px, 1);
-        insertPoint.addView(listIngredients, 5, params);
+        insertPoint.addView(listIngredients, -1, params);
     }
 
     /* TODO: change logic later on */
