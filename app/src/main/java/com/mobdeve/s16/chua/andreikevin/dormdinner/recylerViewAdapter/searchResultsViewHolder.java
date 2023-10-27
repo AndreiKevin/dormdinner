@@ -12,6 +12,7 @@ import com.mobdeve.s16.chua.andreikevin.dormdinner.R;
 public class searchResultsViewHolder extends RecyclerView.ViewHolder {
 
     ImageView pic;
+    ImageView pic2;
     TextView recipeName;
     TextView have;
     TextView none;
@@ -21,6 +22,7 @@ public class searchResultsViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
 
         pic = itemView.findViewById(R.id.pic);
+        pic2 = itemView.findViewById(R.id.addToFav);
         recipeName = itemView.findViewById(R.id.recipeName);
         have = itemView.findViewById(R.id.yesAmt);
         none = itemView.findViewById(R.id.noAmt);
