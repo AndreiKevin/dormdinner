@@ -1,6 +1,8 @@
 package com.mobdeve.s16.chua.andreikevin.dormdinner.recylerViewAdapter;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,8 +47,14 @@ public class searchResultsAdapter extends RecyclerView.Adapter<searchResultsView
         holder.pic2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dbHandler.addNewFav(items.get(holder.getAdapterPosition()).getRecipeName()/*, items.get(holder.getAdapterPosition()).getPic()*/);
-                Toast.makeText(context, "Added to bookmarked", Toast.LENGTH_SHORT).show();
+                SQLiteDatabase db = dbHandler.getWritableDatabase();
+                Cursor cursor = db.rawQuery("Select * from favoriteRecipes where recipe_name = ?", new String[]{items.get(holder.getAdapterPosition()).getRecipeName()});
+                if (cursor.getCount() > 0){
+                    //Toast.makeText(context, "This recipe is already in your bookmark!", Toast.LENGTH_SHORT).show();
+                } else {
+                    dbHandler.addNewFav(items.get(holder.getAdapterPosition()).getRecipeName()/*, items.get(holder.getAdapterPosition()).getPic()*/);
+                    Toast.makeText(context, "Added to bookmarked", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

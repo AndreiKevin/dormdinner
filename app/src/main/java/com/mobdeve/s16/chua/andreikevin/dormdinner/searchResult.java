@@ -21,7 +21,7 @@ public class searchResult extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_result);
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = findViewById(R.id.searchResultRecycler);
 
         items.add(new Items(R.drawable.roasted_chicken, R.drawable.favs_off, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
         items.add(new Items(R.drawable.chicken_casserole, R.drawable.favs_off, 0, 1, "Chicken and Apple Stuffing Casserole"));

@@ -45,9 +45,24 @@ public class DBHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public Cursor getData(){
+    public Boolean deleteData(String recipeName){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from " + TABLE_NAME, null);
-        return res;
+        Cursor cursor = db.rawQuery("Select * from favoriteRecipes where recipe_name = ?", new String[]{recipeName});
+        if (cursor.getCount() > 0){
+            long result = db.delete("favoriteRecipes", "recipe_Name=?", new String[]{recipeName});
+            if (result == -1){
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public Cursor getData() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("Select * from favoriteRecipes", null);
+        return cursor;
     }
 }
