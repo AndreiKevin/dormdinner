@@ -41,7 +41,7 @@ public class favoriteRecipes extends AppCompatActivity {
         settingsClicked(settings);
 
         //TODO experimental code:
-        txt = findViewById(R.id.recipeNameFavs);
+        /*txt = findViewById(R.id.recipeNameFavs);
         delete = findViewById(R.id.delete);
         db = new DBHandler(this);
         txt.setText(" ");
@@ -67,7 +67,7 @@ public class favoriteRecipes extends AppCompatActivity {
                     Toast.makeText(favoriteRecipes.this, "Deleted", Toast.LENGTH_SHORT).show();}
                 else {Toast.makeText(favoriteRecipes.this, "Not deleted", Toast.LENGTH_SHORT).show();}
             }
-        });
+        });*/
         //TODO experimental code
 
         RecyclerView recyclerView = findViewById(R.id.favsRecycler);
