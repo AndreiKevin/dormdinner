@@ -57,7 +57,7 @@ public class Adapter extends RecyclerView.Adapter<searchResultsViewHolder> {
         holder.pic2.setChecked(itemlist.isToggled());
 
 
-        holder.pic2.setOnClickListener(v -> {
+        /*holder.pic2.setOnClickListener(v -> {
             SQLiteDatabase db = dbHandler.getWritableDatabase();
             Cursor cursor = db.rawQuery("Select * from favoriteRecipes where recipe_name = ?", new String[]{items.get(holder.getAdapterPosition()).getRecipeName()});
             if (cursor.getCount() > 0){
@@ -67,13 +67,13 @@ public class Adapter extends RecyclerView.Adapter<searchResultsViewHolder> {
                     itemlist.setToggled(isChecked);
                 });
             } else {
-                dbHandler.addNewFav(items.get(holder.getAdapterPosition()).getRecipeName()/*, items.get(holder.getAdapterPosition()).getPic()*/);
+                dbHandler.addNewFav(items.get(holder.getAdapterPosition()).getRecipeName()/*, items.get(holder.getAdapterPosition()).getPic()*//*);
                 Toast.makeText(context, "Added to bookmarked", Toast.LENGTH_SHORT).show();
                 holder.pic2.setOnCheckedChangeListener((buttonView, isChecked) -> {
                     itemlist.setToggled(isChecked);
                 });
             }
-        });
+        });*/
 
     }
 
