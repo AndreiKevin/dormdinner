@@ -6,6 +6,10 @@ android {
     namespace = "com.mobdeve.s16.chua.andreikevin.dormdinner"
     compileSdk = 34
 
+    buildFeatures {
+        buildConfig = true
+    }
+    
     defaultConfig {
         applicationId = "com.mobdeve.s16.chua.andreikevin.dormdinner"
         minSdk = 24
@@ -14,6 +18,10 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // Set API keys in BuildConfig
+        val SPOONACULAR_API_KEY: String by project
+        buildConfigField("String", "SPOONACULAR_API_KEY", "\"${SPOONACULAR_API_KEY}\"")
     }
 
     buildTypes {

@@ -2,6 +2,7 @@ package com.mobdeve.s16.chua.andreikevin.dormdinner;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,8 +25,14 @@ public class searchResult extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.searchResultRecycler);
 
-        items.add(new Items("1", R.drawable.roasted_chicken, false, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
-        items.add(new Items("2", R.drawable.chicken_casserole, false, 0, 1, "Chicken and Apple Stuffing Casserole"));
+        items.add(new Items("1", R.drawable.roasted_chicken, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
+        items.add(new Items("2", R.drawable.chicken_casserole, 0, 1, "Chicken and Apple Stuffing Casserole"));
+        items.add(new Items("3", R.drawable.roasted_chicken, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
+        items.add(new Items("4", R.drawable.chicken_casserole, 0, 1, "Chicken and Apple Stuffing Casserole"));
+        items.add(new Items("5", R.drawable.roasted_chicken, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
+        items.add(new Items("6", R.drawable.chicken_casserole, 0, 1, "Chicken and Apple Stuffing Casserole"));
+        items.add(new Items("7", R.drawable.roasted_chicken, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
+        items.add(new Items("8", R.drawable.chicken_casserole, 0, 1, "Chicken and Apple Stuffing Casserole"));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         Adapter adapter = new Adapter(this, items, position -> {

@@ -19,7 +19,6 @@ public class Adapter extends RecyclerView.Adapter<searchResultsViewHolder> {
 
     Context context;
     List<Items> items;
-
     private ItemClickListener itemClickListener;
 
     DBHandler dbHandler;

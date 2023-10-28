@@ -21,6 +21,10 @@ public class Items {
         return pic;
     }
 
+    public String getId() {
+        return id;
+    }
+
     public void setPic(int pic) {
         this.pic = pic;
     }
