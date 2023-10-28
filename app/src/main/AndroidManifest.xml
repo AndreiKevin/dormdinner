@@ -13,6 +13,12 @@
         android:theme="@style/Theme.Dormdinner"
         tools:targetApi="31">
         <activity
+            android:name=".viewRecipe"
+            android:exported="false">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".searchResult" />
+        </activity>
+        <activity
             android:name=".landing"
             android:exported="true">
             <intent-filter>

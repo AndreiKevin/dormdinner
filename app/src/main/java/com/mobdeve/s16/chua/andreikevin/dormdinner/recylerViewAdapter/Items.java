@@ -1,15 +1,17 @@
 package com.mobdeve.s16.chua.andreikevin.dormdinner.recylerViewAdapter;
 
 public class Items {
+    String id;
     int pic;
-    Boolean isToggled;
+    Boolean pic2;
     int none;
     int have;
     String recipeName;
 
-    public Items(int pic, Boolean isToggled, int yesAmt, int noAmt, String recipeName) {
+    public Items(String id, int pic, Boolean pic2, int yesAmt, int noAmt, String recipeName) {
+        this.id = id;
         this.pic = pic;
-        this.isToggled = isToggled;
+        this.pic2 = pic2;
         this.have = yesAmt;
         this.none = noAmt;
         this.recipeName = recipeName;
@@ -23,12 +25,14 @@ public class Items {
         this.pic = pic;
     }
 
-    public boolean isToggled() {
-        return isToggled;
+    public String getId(){ return this.id; }
+
+    public Boolean isToggled() {
+        return pic2;
     }
 
-    public void setToggled(boolean pic2) {
-        this.isToggled = pic2;
+    public void setToggled(Boolean pic2) {
+        this.pic2 = pic2;
     }
 
     public int getHave() {
