@@ -3,13 +3,15 @@ package com.mobdeve.s16.chua.andreikevin.dormdinner.recylerViewAdapter;
 public class Items {
     String id;
     int pic;
+    Boolean pic2;
     int none;
     int have;
     String recipeName;
 
-    public Items(String id, int pic, Integer yesAmt, Integer noAmt, String recipeName) {
+    public Items(String id, int pic, Boolean pic2, int yesAmt, int noAmt, String recipeName) {
         this.id = id;
         this.pic = pic;
+        this.pic2 = pic2;
         this.have = yesAmt;
         this.none = noAmt;
         this.recipeName = recipeName;
@@ -25,6 +27,14 @@ public class Items {
 
     public void setPic(int pic) {
         this.pic = pic;
+    }
+
+    public Boolean isToggled() {
+        return pic2;
+    }
+
+    public void setToggled(Boolean pic2) {
+        this.pic2 = pic2;
     }
 
     public int getHave() {

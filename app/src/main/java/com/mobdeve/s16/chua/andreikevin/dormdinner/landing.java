@@ -1,10 +1,10 @@
 package com.mobdeve.s16.chua.andreikevin.dormdinner;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class landing extends AppCompatActivity {
     private static final int DELAY = 1500;

@@ -23,16 +23,16 @@ public class searchResult extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_result);
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = findViewById(R.id.searchResultRecycler);
 
-        items.add(new Items("1", R.drawable.roasted_chicken, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
-        items.add(new Items("2", R.drawable.chicken_casserole, 0, 1, "Chicken and Apple Stuffing Casserole"));
-        items.add(new Items("3", R.drawable.roasted_chicken, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
-        items.add(new Items("4", R.drawable.chicken_casserole, 0, 1, "Chicken and Apple Stuffing Casserole"));
-        items.add(new Items("5", R.drawable.roasted_chicken, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
-        items.add(new Items("6", R.drawable.chicken_casserole, 0, 1, "Chicken and Apple Stuffing Casserole"));
-        items.add(new Items("7", R.drawable.roasted_chicken, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
-        items.add(new Items("8", R.drawable.chicken_casserole, 0, 1, "Chicken and Apple Stuffing Casserole"));
+        items.add(new Items("1", R.drawable.roasted_chicken, false, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
+        items.add(new Items("2", R.drawable.chicken_casserole, false,0, 1, "Chicken and Apple Stuffing Casserole"));
+        items.add(new Items("3", R.drawable.roasted_chicken, false,4, 3, "Rosemary-Roasted Chicken with Potatoes"));
+        items.add(new Items("4", R.drawable.chicken_casserole, false,0, 1, "Chicken and Apple Stuffing Casserole"));
+        items.add(new Items("5", R.drawable.roasted_chicken, false,4, 3, "Rosemary-Roasted Chicken with Potatoes"));
+        items.add(new Items("6", R.drawable.chicken_casserole, false,0, 1, "Chicken and Apple Stuffing Casserole"));
+        items.add(new Items("7", R.drawable.roasted_chicken, false,4, 3, "Rosemary-Roasted Chicken with Potatoes"));
+        items.add(new Items("8", R.drawable.chicken_casserole, false,0, 1, "Chicken and Apple Stuffing Casserole"));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         Adapter adapter = new Adapter(this, items, position -> {
@@ -42,6 +42,5 @@ public class searchResult extends AppCompatActivity {
             startActivity(intent);
         });
         recyclerView.setAdapter(adapter);
-
     }
 }
