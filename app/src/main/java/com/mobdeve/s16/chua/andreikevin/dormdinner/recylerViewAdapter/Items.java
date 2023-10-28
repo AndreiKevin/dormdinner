@@ -29,8 +29,6 @@ public class Items {
         this.pic = pic;
     }
 
-    public String getId(){ return this.id; }
-
     public Boolean isToggled() {
         return pic2;
     }
