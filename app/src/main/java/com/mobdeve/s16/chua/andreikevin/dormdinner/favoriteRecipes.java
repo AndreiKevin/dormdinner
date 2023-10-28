@@ -22,12 +22,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class favoriteRecipes extends AppCompatActivity {
-    private ImageButton pantry_on_btn, settings;
+    private ImageButton pantry_on_btn, settings, search;
     TextView txt;
     DBHandler db;
     Button delete;
     Adapter.ItemClickListener itemClickListener;
-    public List<Items> items1 = new ArrayList<Items>();
+    public List<Items> items = new ArrayList<Items>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,9 @@ public class favoriteRecipes extends AppCompatActivity {
 
         settings = findViewById(R.id.settings);
         settingsClicked(settings);
+
+        search = findViewById(R.id.search_btn_favs);
+        searchClicked(search);
 
         //TODO experimental code:
         txt = findViewById(R.id.recipeNameFavs);
@@ -72,18 +75,18 @@ public class favoriteRecipes extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.favsRecycler);
 
-        items1.add(new Items("1", R.drawable.roasted_chicken, false, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
-        items1.add(new Items("2", R.drawable.chicken_casserole, false, 0, 1, "Chicken and Apple Stuffing Casserole"));
-        items1.add(new Items("3", R.drawable.roasted_chicken, false, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
-        items1.add(new Items("4", R.drawable.chicken_casserole, false, 0, 1, "Chicken and Apple Stuffing Casserole"));
-        items1.add(new Items("5", R.drawable.roasted_chicken, false, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
-        items1.add(new Items("6", R.drawable.chicken_casserole, false, 0, 1, "Chicken and Apple Stuffing Casserole"));
-        items1.add(new Items("7", R.drawable.roasted_chicken, false, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
-        items1.add(new Items("8", R.drawable.chicken_casserole, false, 0, 1, "Chicken and Apple Stuffing Casserole"));
+        items.add(new Items("1", R.drawable.roasted_chicken, false, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
+        items.add(new Items("2", R.drawable.chicken_casserole, false, 0, 1, "Chicken and Apple Stuffing Casserole"));
+        items.add(new Items("3", R.drawable.roasted_chicken, false, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
+        items.add(new Items("4", R.drawable.chicken_casserole, false, 0, 1, "Chicken and Apple Stuffing Casserole"));
+        items.add(new Items("5", R.drawable.roasted_chicken, false, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
+        items.add(new Items("6", R.drawable.chicken_casserole, false, 0, 1, "Chicken and Apple Stuffing Casserole"));
+        items.add(new Items("7", R.drawable.roasted_chicken, false, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
+        items.add(new Items("8", R.drawable.chicken_casserole, false, 0, 1, "Chicken and Apple Stuffing Casserole"));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        Adapter adapter = new Adapter(this, items1, position -> {
-            Items item = items1.get(position);
+        Adapter adapter = new Adapter(this, items, position -> {
+            Items item = items.get(position);
             Intent intent = new Intent(this, viewRecipe.class);
             intent.putExtra("itemId", item.getId());
             startActivity(intent);
@@ -106,10 +109,10 @@ public class favoriteRecipes extends AppCompatActivity {
         });
     }
 
-    public void sampleRecipeClicked(View v){
-        Intent goSampleRecipe = new Intent(getApplicationContext(), viewRecipe.class);
+    public void searchClicked(View v){
+        Intent intent = new Intent(getApplicationContext(), searchResult.class);
         v.setOnClickListener(x -> {
-            startActivity(goSampleRecipe);
+            startActivity(intent);
         });
     }
 }
