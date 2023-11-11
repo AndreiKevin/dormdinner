@@ -1,7 +1,5 @@
 package com.mobdeve.s16.chua.andreikevin.dormdinner;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.TypedValue;
@@ -12,12 +10,13 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.bumptech.glide.Glide;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.MissingResourceException;
 
 public class viewRecipe extends AppCompatActivity {
 
@@ -32,6 +31,9 @@ public class viewRecipe extends AppCompatActivity {
     /* TODO:change logic later on */
     recipeData recipeData;
 
+    //TODO here
+    String recipeName1, imgUrl;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,14 +47,18 @@ public class viewRecipe extends AppCompatActivity {
         this.readyInMinutes = (TextView) findViewById(R.id.readyInMinutes);
         this.btnFavorite = (ImageButton) findViewById(R.id.btnFavorite);
 
+        //TODO Here
+        recipeName1 = getIntent().getStringExtra("recipeName");
+        //imgUrl = getIntent().hasExtra("imageUrl");
+
 
         // In MCO3 we will do recipeData = get from Intent() instead
-        if(getIntent().hasExtra("itemId")) {
+        /*if(getIntent().hasExtra("itemId")) {
             String itemId = getIntent().getStringExtra("itemId");
             // Now you have itemId. Continue doing your API call and other works
         }else {
             throw new RuntimeException("Item/Recipe has no ID");
-        }
+        }*/
 
         /* initialize missing and in-pantry ingredients of sample recipe 1 */
         ArrayList<ingredientData> recipeIngredientsInPantry = new ArrayList<ingredientData>();
@@ -82,13 +88,15 @@ public class viewRecipe extends AppCompatActivity {
 
         /* initialize sample recipe 1 */
         try {
-            recipeData = new recipeData("1", "Baked Chicken Thighs with Apples and Onions",
-                                                        new URL("https://www.allrecipes.com/cook/fabeveryday"),
-                                                        "fabeveryday",
-                                                        R.drawable.sample_recipe_1,
-                                                        recipeIngredientsInPantry.size(), recipeIngredientsMissing.size(),
-                                                        45, 17, instructions,
-                                                        recipeIngredientsInPantry, recipeIngredientsMissing, false);
+            recipeData = new recipeData("1",
+                    //TODO here
+                    recipeName1,
+                    new URL("https://www.allrecipes.com/cook/fabeveryday"),
+                    "fabeveryday",
+                    R.drawable.sample_recipe_1,
+                    recipeIngredientsInPantry.size(), recipeIngredientsMissing.size(),
+                    45, 17, instructions,
+                    recipeIngredientsInPantry, recipeIngredientsMissing, false);
 
             // Start of calls that are sample generation independent
             setDataToLayout(recipeData);
@@ -205,7 +213,7 @@ public class viewRecipe extends AppCompatActivity {
         }
         else {
             recipeData.setIsFavorite(true);
-            btnFavorite.setImageResource(R.drawable.btn_favorite_on);
+            btnFavorite.setImageResource(R.drawable.favs_on);
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.mobdeve.s16.chua.andreikevin.dormdinner.recylerViewAdapter;
+package com.mobdeve.s16.chua.andreikevin.dormdinner;
 
 public class Items {
     String id;
@@ -21,13 +21,11 @@ public class Items {
         return pic;
     }
 
-    public String getId() {
-        return id;
-    }
-
     public void setPic(int pic) {
         this.pic = pic;
     }
+
+    public String getId(){ return this.id; }
 
     public Boolean isToggled() {
         return pic2;

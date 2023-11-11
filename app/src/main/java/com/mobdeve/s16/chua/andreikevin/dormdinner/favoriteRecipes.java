@@ -1,33 +1,28 @@
 package com.mobdeve.s16.chua.andreikevin.dormdinner;
 
-import android.app.AlertDialog;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobdeve.s16.chua.andreikevin.dormdinner.database.DBHandler;
-import com.mobdeve.s16.chua.andreikevin.dormdinner.recylerViewAdapter.Adapter;
-import com.mobdeve.s16.chua.andreikevin.dormdinner.recylerViewAdapter.Items;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class favoriteRecipes extends AppCompatActivity {
-    private ImageButton pantry_on_btn, settings, search;
+    private ImageButton pantry_on_btn, settings;
     TextView txt;
     DBHandler db;
     Button delete;
     Adapter.ItemClickListener itemClickListener;
-    public List<Items> items = new ArrayList<Items>();
+    public List<Items> items1 = new ArrayList<Items>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +34,6 @@ public class favoriteRecipes extends AppCompatActivity {
 
         settings = findViewById(R.id.settings);
         settingsClicked(settings);
-
-        search = findViewById(R.id.search_btn_favs);
-        searchClicked(search);
 
         //TODO experimental code:
         /*txt = findViewById(R.id.recipeNameFavs);
@@ -75,18 +67,18 @@ public class favoriteRecipes extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.favsRecycler);
 
-        items.add(new Items("1", R.drawable.roasted_chicken, false, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
-        items.add(new Items("2", R.drawable.chicken_casserole, false, 0, 1, "Chicken and Apple Stuffing Casserole"));
-        items.add(new Items("3", R.drawable.roasted_chicken, false, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
-        items.add(new Items("4", R.drawable.chicken_casserole, false, 0, 1, "Chicken and Apple Stuffing Casserole"));
-        items.add(new Items("5", R.drawable.roasted_chicken, false, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
-        items.add(new Items("6", R.drawable.chicken_casserole, false, 0, 1, "Chicken and Apple Stuffing Casserole"));
-        items.add(new Items("7", R.drawable.roasted_chicken, false, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
-        items.add(new Items("8", R.drawable.chicken_casserole, false, 0, 1, "Chicken and Apple Stuffing Casserole"));
+        items1.add(new Items("1", R.drawable.roasted_chicken, false, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
+        items1.add(new Items("2", R.drawable.chicken_casserole, false, 0, 1, "Chicken and Apple Stuffing Casserole"));
+        items1.add(new Items("3", R.drawable.roasted_chicken, false, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
+        items1.add(new Items("4", R.drawable.chicken_casserole, false, 0, 1, "Chicken and Apple Stuffing Casserole"));
+        items1.add(new Items("5", R.drawable.roasted_chicken, false, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
+        items1.add(new Items("6", R.drawable.chicken_casserole, false, 0, 1, "Chicken and Apple Stuffing Casserole"));
+        items1.add(new Items("7", R.drawable.roasted_chicken, false, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
+        items1.add(new Items("8", R.drawable.chicken_casserole, false, 0, 1, "Chicken and Apple Stuffing Casserole"));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        Adapter adapter = new Adapter(this, items, position -> {
-            Items item = items.get(position);
+        Adapter adapter = new Adapter(this, items1, position -> {
+            Items item = items1.get(position);
             Intent intent = new Intent(this, viewRecipe.class);
             intent.putExtra("itemId", item.getId());
             startActivity(intent);
@@ -109,10 +101,10 @@ public class favoriteRecipes extends AppCompatActivity {
         });
     }
 
-    public void searchClicked(View v){
-        Intent intent = new Intent(getApplicationContext(), searchResult.class);
+    public void sampleRecipeClicked(View v){
+        Intent goSampleRecipe = new Intent(getApplicationContext(), viewRecipe.class);
         v.setOnClickListener(x -> {
-            startActivity(intent);
+            startActivity(goSampleRecipe);
         });
     }
 }

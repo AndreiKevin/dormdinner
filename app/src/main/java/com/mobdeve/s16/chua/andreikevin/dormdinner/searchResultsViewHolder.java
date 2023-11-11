@@ -1,4 +1,4 @@
-package com.mobdeve.s16.chua.andreikevin.dormdinner.recylerViewAdapter;
+package com.mobdeve.s16.chua.andreikevin.dormdinner;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -7,8 +7,6 @@ import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.mobdeve.s16.chua.andreikevin.dormdinner.R;
 
 public class searchResultsViewHolder extends RecyclerView.ViewHolder {
 
@@ -22,7 +20,7 @@ public class searchResultsViewHolder extends RecyclerView.ViewHolder {
     public searchResultsViewHolder(@NonNull View itemView) {
         super(itemView);
 
-        pic = itemView.findViewById(R.id.pic);
+        pic = itemView.findViewById(R.id.resultRecyclerPic);
         pic2 = itemView.findViewById(R.id.addToFav);
         recipeName = itemView.findViewById(R.id.recipeName);
         have = itemView.findViewById(R.id.yesAmt);

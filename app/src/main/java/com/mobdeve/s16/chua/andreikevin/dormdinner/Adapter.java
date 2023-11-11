@@ -1,16 +1,12 @@
-package com.mobdeve.s16.chua.andreikevin.dormdinner.recylerViewAdapter;
+package com.mobdeve.s16.chua.andreikevin.dormdinner;
 
 import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mobdeve.s16.chua.andreikevin.dormdinner.R;
 import com.mobdeve.s16.chua.andreikevin.dormdinner.database.DBHandler;
 
 import java.util.List;
@@ -19,6 +15,7 @@ public class Adapter extends RecyclerView.Adapter<searchResultsViewHolder> {
 
     Context context;
     List<Items> items;
+
     private ItemClickListener itemClickListener;
 
     DBHandler dbHandler;
