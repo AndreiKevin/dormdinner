@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mobdeve.s16.chua.andreikevin.dormdinner.database.DBHandler;
-
 import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<searchResultsViewHolder> {
@@ -49,9 +47,6 @@ public class Adapter extends RecyclerView.Adapter<searchResultsViewHolder> {
         dbHandler = new DBHandler(this.context);
 
         Items itemlist = items.get(position);
-        holder.pic2.setChecked(items.get(position).isToggled());
-        holder.pic2.setOnCheckedChangeListener(null);
-        holder.pic2.setChecked(itemlist.isToggled());
 
 
         /*holder.pic2.setOnClickListener(v -> {

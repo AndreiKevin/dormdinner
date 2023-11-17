@@ -11,8 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mobdeve.s16.chua.andreikevin.dormdinner.database.DBHandler;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,7 +65,7 @@ public class favoriteRecipes extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.favsRecycler);
 
-        items1.add(new Items("1", R.drawable.roasted_chicken, false, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
+        /*items1.add(new Items("1", R.drawable.roasted_chicken, false, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
         items1.add(new Items("2", R.drawable.chicken_casserole, false, 0, 1, "Chicken and Apple Stuffing Casserole"));
         items1.add(new Items("3", R.drawable.roasted_chicken, false, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
         items1.add(new Items("4", R.drawable.chicken_casserole, false, 0, 1, "Chicken and Apple Stuffing Casserole"));
@@ -75,7 +73,7 @@ public class favoriteRecipes extends AppCompatActivity {
         items1.add(new Items("6", R.drawable.chicken_casserole, false, 0, 1, "Chicken and Apple Stuffing Casserole"));
         items1.add(new Items("7", R.drawable.roasted_chicken, false, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
         items1.add(new Items("8", R.drawable.chicken_casserole, false, 0, 1, "Chicken and Apple Stuffing Casserole"));
-
+*/
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         Adapter adapter = new Adapter(this, items1, position -> {
             Items item = items1.get(position);
@@ -98,13 +96,6 @@ public class favoriteRecipes extends AppCompatActivity {
         Intent goSettings = new Intent(getApplicationContext(), settings.class);
         v.setOnClickListener(x -> {
             startActivity(goSettings);
-        });
-    }
-
-    public void sampleRecipeClicked(View v){
-        Intent goSampleRecipe = new Intent(getApplicationContext(), viewRecipe.class);
-        v.setOnClickListener(x -> {
-            startActivity(goSampleRecipe);
         });
     }
 }

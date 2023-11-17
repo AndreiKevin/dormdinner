@@ -1,10 +1,10 @@
-package com.mobdeve.s16.chua.andreikevin.dormdinner.API;
+package com.mobdeve.s16.chua.andreikevin.dormdinner;
 
 import com.google.gson.annotations.SerializedName;
 
 public class Recipe {
     @SerializedName("id")
-    private int id;
+    private String id;
 
     @SerializedName("title")
     private String name;
@@ -12,9 +12,21 @@ public class Recipe {
     @SerializedName("image")
     private String image;
 
+    @SerializedName("likes")
+    private int likes;
+
+    public int getAmount() {
+        return amount;
+    }
+
+    @SerializedName("amount")
+    private int amount;
+
     public int getUsedIngredientCount() {
         return usedIngredientCount;
     }
+
+    public int getLikes(){ return likes; }
 
     public int getMissedIngredientCount() {
         return missedIngredientCount;
@@ -26,7 +38,7 @@ public class Recipe {
     @SerializedName("missedIngredientCount")
     private int missedIngredientCount;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

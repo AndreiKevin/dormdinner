@@ -1,4 +1,4 @@
-package com.mobdeve.s16.chua.andreikevin.dormdinner.API;
+package com.mobdeve.s16.chua.andreikevin.dormdinner;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mobdeve.s16.chua.andreikevin.dormdinner.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -18,13 +17,17 @@ import java.util.List;
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
     private List<String> recipes;
     private List<String> imageUrls;
+    private List<String> recipeIDs;
+    private ArrayList<Integer> numLikes;
     private ArrayList<Integer> usedIngredientCount;
     private ArrayList<Integer> missedIngredientCount;
     private OnItemClickListener onItemClickListener;
 
-    public void setRecipes(List<String> recipes, List<String> imageUrls, ArrayList<Integer> usedIngredientCount, ArrayList<Integer> missedIngredientCount) {
+    public void setRecipes(List<String> recipes, List<String> imageUrls, List<String> recipeID, ArrayList<Integer> likes, ArrayList<Integer> usedIngredientCount, ArrayList<Integer> missedIngredientCount) {
         this.recipes = recipes;
         this.imageUrls = imageUrls;
+        this.recipeIDs = recipeID;
+        this.numLikes = likes;
         this.missedIngredientCount = missedIngredientCount;
         this.usedIngredientCount = usedIngredientCount;
         notifyDataSetChanged();

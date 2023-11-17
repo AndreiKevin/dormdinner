@@ -2,15 +2,12 @@ package com.mobdeve.s16.chua.andreikevin.dormdinner;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.mobdeve.s16.chua.andreikevin.dormdinner.API.ApiResponseCallback;
-import com.mobdeve.s16.chua.andreikevin.dormdinner.API.RecipeAdapter;
-import com.mobdeve.s16.chua.andreikevin.dormdinner.API.RecipeApiClient;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,12 +19,14 @@ public class searchResult extends AppCompatActivity {
     private RecipeApiClient recipeApiClient;
     public RecipeAdapter recipeAdapter;
     private RecyclerView recipesRecyclerView;
+    private TextView totalCnt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_result);
 
+        totalCnt = findViewById(R.id.numCount);
         recipesRecyclerView = findViewById(R.id.searchResultRecycler);
         Intent intent = getIntent();
         ArrayList<String> ingredientList = intent.getStringArrayListExtra("ingredientList");
@@ -47,25 +46,26 @@ public class searchResult extends AppCompatActivity {
         List<String> ingredientLists = Arrays.asList(joined.split(","));
 
         recipeApiClient.searchRecipesByIngredients(ingredientLists, new ApiResponseCallback() {
-
             @Override
-            public void onSuccess(List<String> recipeNames, List<String> imageUrls) {
-            }
-
-            @Override
-            public void onSuccess(List<String> recipeNames, List<String> imageUrls, ArrayList<Integer> usedCount, ArrayList<Integer> missedCount) {
-                recipeAdapter.setRecipes(recipeNames, imageUrls, usedCount, missedCount);
+            public void onSuccess(List<String> recipeNames, List<String> imageUrls, List<String> recipeID, ArrayList<Integer> likes, ArrayList<Integer> usedCount, ArrayList<Integer> missedCount/*, ArrayList<Integer> amount*/) {
+                recipeAdapter.setRecipes(recipeNames, imageUrls, recipeID, likes, usedCount, missedCount);
+                totalCnt.setText(String.valueOf(recipeAdapter.getItemCount()));
                 recipeAdapter.setOnItemClickListener(new RecipeAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(int position) {
                         // Get the clicked recipe name and image URL
-                        String recipeName = recipeNames.get(position);
-                        String imageUrl = imageUrls.get(position);
+                        int countUsed = usedCount.get(position);
+                        int countMissed = missedCount.get(position);
+                        String recipeIDs = recipeID.get(position);
+                        int numLikes = likes.get(position);
 
                         // Create an intent and pass the relevant data to the new activity
                         Intent intent = new Intent(searchResult.this, viewRecipe.class);
-                        intent.putExtra("recipeName", recipeName);
-                        intent.putExtra("imageUrl", imageUrl);
+                        intent.putExtra("usedCount", countUsed);
+                        intent.putExtra("missedCount", countMissed);
+                        intent.putExtra("recipeID", recipeIDs);
+                        intent.putExtra("likes", numLikes);
+                        intent.putExtra("ingredientList", ingredientList);
                         startActivity(intent);
                     }
                 });

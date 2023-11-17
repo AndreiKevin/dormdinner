@@ -1,4 +1,4 @@
-package com.mobdeve.s16.chua.andreikevin.dormdinner.API;
+package com.mobdeve.s16.chua.andreikevin.dormdinner;
 
 import android.text.TextUtils;
 
@@ -38,11 +38,15 @@ public class RecipeApiClient {
                     List<Recipe> recipes = response.body();
                     List<String> recipeNames = new ArrayList<>();
                     List<String> imageUrls = new ArrayList<>();
+                    List<String> recipeIDs = new ArrayList<>();
+                    ArrayList<Integer> likes = new ArrayList<>();
                     ArrayList<Integer> usedCount = new ArrayList<>();
                     ArrayList<Integer> missedCount = new ArrayList<>();
 
                     if (recipes != null) {
                         for (Recipe recipe : recipes) {
+                            recipeIDs.add(recipe.getId());
+                            likes.add(recipe.getLikes());
                             recipeNames.add(recipe.getName());
                             imageUrls.add(recipe.getImageUrl());
                             usedCount.add(recipe.getUsedIngredientCount());
@@ -50,7 +54,7 @@ public class RecipeApiClient {
                         }
                     }
 
-                    callback.onSuccess(recipeNames, imageUrls, usedCount, missedCount);
+                    callback.onSuccess(recipeNames, imageUrls, recipeIDs, likes, usedCount, missedCount/*, amount*/);
                 } else {
                     callback.onFailure("Failed to fetch recipes");
                 }

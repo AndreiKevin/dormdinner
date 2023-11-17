@@ -1,4 +1,4 @@
-package com.mobdeve.s16.chua.andreikevin.dormdinner.API;
+package com.mobdeve.s16.chua.andreikevin.dormdinner;
 
 import java.util.List;
 

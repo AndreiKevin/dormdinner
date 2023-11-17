@@ -1,4 +1,4 @@
-package com.mobdeve.s16.chua.andreikevin.dormdinner.database;
+package com.mobdeve.s16.chua.andreikevin.dormdinner;
 
 import android.content.ContentValues;
 import android.content.Context;

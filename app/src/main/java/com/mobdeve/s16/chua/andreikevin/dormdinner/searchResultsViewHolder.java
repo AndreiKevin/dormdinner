@@ -21,7 +21,6 @@ public class searchResultsViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
 
         pic = itemView.findViewById(R.id.resultRecyclerPic);
-        pic2 = itemView.findViewById(R.id.addToFav);
         recipeName = itemView.findViewById(R.id.recipeName);
         have = itemView.findViewById(R.id.yesAmt);
         none = itemView.findViewById(R.id.noAmt);
