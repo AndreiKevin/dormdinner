@@ -8,12 +8,9 @@ public class Items {
     int have;
     String recipeName;
 
-    public Items(String id, int pic, Boolean pic2, int yesAmt, int noAmt, String recipeName) {
-        this.id = id;
+    public Items(int pic, Boolean pic2, String recipeName) {
         this.pic = pic;
         this.pic2 = pic2;
-        this.have = yesAmt;
-        this.none = noAmt;
         this.recipeName = recipeName;
     }
 

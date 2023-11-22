@@ -10,7 +10,6 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String DB_NAME = "dormDiner_favoriteRecipes";
     private static final int DB_VERSION = 1;
     private static final String TABLE_NAME = "favoriteRecipes";
-    private static final String ID_COL = "id";
     private static final String RECIPE_NAME_COL = "recipe_name";
     private static final int IMAGE = 0;
     public DBHandler(Context context) {
@@ -20,7 +19,6 @@ public class DBHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE " + TABLE_NAME + " ("
-                + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + RECIPE_NAME_COL + " TEXT)";
 
         db.execSQL(query);

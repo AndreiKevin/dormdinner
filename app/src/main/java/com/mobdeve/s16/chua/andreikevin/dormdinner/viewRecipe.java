@@ -2,6 +2,7 @@ package com.mobdeve.s16.chua.andreikevin.dormdinner;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -35,6 +36,7 @@ public class viewRecipe extends AppCompatActivity {
     ImageButton btnFavorite;
     /* TODO:change logic later on */
     recipeData recipeData;
+    DBHandler db;
 
     //TODO here
     String recipeID;
@@ -42,6 +44,7 @@ public class viewRecipe extends AppCompatActivity {
     private RecyclerView recipesRecyclerView;
     private fullRecipeApi recipeApiClient;
     private ArrayList<Integer> amounts;
+    String recipeTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +79,7 @@ public class viewRecipe extends AppCompatActivity {
             @Override
             public void onSuccess(String recipeNames, String imageUrl, int readyMin, String credits, List<String> extraName, List<String> imgUrl) {
                 recipeName.setText(recipeNames);
+                recipeTitle = recipeNames;
                 Picasso.with(viewRecipe.this).load(imageUrl).into(recipeBanner);
                 readyInMinutes.setText(String.valueOf(readyMin) + " mins");
                 recipeCredits.setText(credits);
@@ -86,6 +90,22 @@ public class viewRecipe extends AppCompatActivity {
                     //TODO it needs to be inside this for loop kasi this creates the ingredient thingy
                     //TODO add missedIngredients data + recipe mismo
                     Picasso.with(viewRecipe.this).load(imgUrl.get(i)).into((ImageView) ingredient_view.findViewById(R.id.ingredientImage));
+                }
+
+                db = new DBHandler(viewRecipe.this);
+                Cursor res = db.getData();
+                if(res.getCount() < 1){
+                    btnFavorite.setImageResource(R.drawable.btn_favorite_off);
+                }
+                else {
+                    res = db.getData();
+                    while (res.moveToNext()) {
+                        if (res.getString(0).equals(recipeTitle)) {
+                            btnFavorite.setImageResource(R.drawable.favs_on);
+                        } else {
+                            btnFavorite.setImageResource(R.drawable.btn_favorite_off);
+                        }
+                    }
                 }
 
                 try {
@@ -113,6 +133,8 @@ public class viewRecipe extends AppCompatActivity {
                 Toast.makeText(viewRecipe.this, errorMessage, Toast.LENGTH_SHORT).show();
             }
         });
+
+
 
         // In MCO3 we will do recipeData = get from Intent() instead
         /*if(getIntent().hasExtra("itemId")) {
@@ -248,13 +270,37 @@ public class viewRecipe extends AppCompatActivity {
 
     /* TODO: change logic later on */
     public void btnFavoriteClicked(View v) {
-        if (recipeData.getIsFavorite()) {
+        db = new DBHandler(this);
+        Cursor res = db.getData();
+
+        if(res.getCount() < 1){
+            db.addNewFav(recipeTitle);
+            recipeData.setIsFavorite(true);
+            btnFavorite.setImageResource(R.drawable.favs_on);
+        } else {
+            res = db.getData();
+            while(res.moveToNext()){
+                if(res.getString(0).equals(recipeTitle)){
+                    db.deleteData(recipeTitle);
+                    recipeData.setIsFavorite(false);
+                    btnFavorite.setImageResource(R.drawable.btn_favorite_off);
+                }
+                else{
+                    db.addNewFav(recipeTitle);
+                    recipeData.setIsFavorite(true);
+                    btnFavorite.setImageResource(R.drawable.favs_on);
+                }
+            }
+        }
+
+
+        /*(if (recipeData.getIsFavorite()) {
             recipeData.setIsFavorite(false);
             btnFavorite.setImageResource(R.drawable.btn_favorite_off);
         }
         else {
             recipeData.setIsFavorite(true);
             btnFavorite.setImageResource(R.drawable.favs_on);
-        }
+        }*/
     }
 }

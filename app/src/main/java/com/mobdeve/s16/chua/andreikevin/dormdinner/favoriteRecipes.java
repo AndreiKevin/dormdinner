@@ -1,6 +1,7 @@
 package com.mobdeve.s16.chua.andreikevin.dormdinner;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -74,6 +75,13 @@ public class favoriteRecipes extends AppCompatActivity {
         items1.add(new Items("7", R.drawable.roasted_chicken, false, 4, 3, "Rosemary-Roasted Chicken with Potatoes"));
         items1.add(new Items("8", R.drawable.chicken_casserole, false, 0, 1, "Chicken and Apple Stuffing Casserole"));
 */
+
+        db = new DBHandler(this);
+        Cursor cursor = db.getData();
+        while(cursor.moveToNext()){
+            items1.add(new Items(R.drawable.chicken_casserole, false, cursor.getString(0)));
+        }
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         Adapter adapter = new Adapter(this, items1, position -> {
             Items item = items1.get(position);
