@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -78,7 +77,7 @@ public class viewRecipe extends AppCompatActivity {
 
         recipeApiClient.searchRecipesByRecipe(recipeID, new recipeResponseCallback() {
             @Override
-            public void onSuccess(String recipeNames, String imageUrl, int readyMin, String credits, List<String> extraName, List<String> imgUrl) {
+            public void onSuccess(String recipeNames, String imageUrl, int readyMin, String credits, List<String> extraName, List<String> imgUrl, String[] instructions) {
                 recipeName.setText(recipeNames);
                 recipeTitle = recipeNames;
                 Picasso.with(viewRecipe.this).load(imageUrl).into(recipeBanner);
@@ -246,7 +245,7 @@ public class viewRecipe extends AppCompatActivity {
             View instruction_view = vi.inflate(R.layout.list_instructions, null);
 
             TextView step_count = (TextView) instruction_view.findViewById(R.id.step_count);
-            step_count.setText(Integer.toString(stepCnt));
+            step_count.setText(Integer.toString(stepCnt+1));
             TextView step_description = (TextView) instruction_view.findViewById(R.id.step_description);
             step_description.setText(instruction);
 

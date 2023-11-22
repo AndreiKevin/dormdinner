@@ -1,6 +1,9 @@
 package com.mobdeve.s16.chua.andreikevin.dormdinner;
 
+import android.util.Log;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import retrofit2.Call;
@@ -36,9 +39,16 @@ public class fullRecipeApi {
                 if (response.isSuccessful()) {
                     FullRecipe recipes = response.body();
                     String title, imageUrls, creditsText;
+                    String[] instructions;
                     int readyInMinutes;
 
                     title = recipes.getName();
+                    instructions = recipes.getInstructions().split("</li><li>");
+                    for (int i = 0; i < instructions.length; i++) {
+                        int indexOfSpace = instructions[i].indexOf(' ');
+                        instructions[i] = instructions[i].substring(indexOfSpace + 1);
+                        instructions[i] = instructions[i].replace("</li></ol>", "");
+                    }
                     imageUrls = recipes.getImageUrl();
                     readyInMinutes = recipes.getReadyInMinutes();
                     creditsText = recipes.getCredits();
@@ -57,7 +67,7 @@ public class fullRecipeApi {
                         imgUrl.add(url);
                     }
 
-                    callback.onSuccess(title, imageUrls, readyInMinutes, creditsText, originalIng, imgUrl);
+                    callback.onSuccess(title, imageUrls, readyInMinutes, creditsText, originalIng, imgUrl, instructions);
                 } else {
                     callback.onFailure("Failed to fetch recipes");
                 }

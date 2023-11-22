@@ -2,6 +2,7 @@ package com.mobdeve.s16.chua.andreikevin.dormdinner;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FullRecipe {
@@ -31,6 +32,11 @@ public class FullRecipe {
 
     @SerializedName("extendedIngredients")
     private List<ExtendedIngredient> extendedIngredients;
+
+    @SerializedName("instructions")
+    private String instructions;
+
+    public String getInstructions() { return instructions; }
 
     public int getReadyInMinutes() {
         return readyInMinutes;

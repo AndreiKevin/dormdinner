@@ -6,5 +6,5 @@ public interface recipeResponseCallback {
 
     void onFailure(String errorMessage);
 
-    void onSuccess(String title, String imageUrls, int readyInMinutes, String credits, List<String> extraName, List<String> imgUrl);
+    void onSuccess(String title, String imageUrls, int readyInMinutes, String credits, List<String> extraName, List<String> imgUrl, String[] instructions);
 }
