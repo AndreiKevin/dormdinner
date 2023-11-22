@@ -5,8 +5,9 @@ public class ingredientData {
     private Double ingredientAmt;
     private String ingredientImage;
 
-    public ingredientData(String ingredientName) {
+    public ingredientData(String ingredientName, String ingredientImage) {
         this.ingredientName = ingredientName;
+        this.ingredientImage = ingredientImage;
     }
 
     public String getIngredientName() {

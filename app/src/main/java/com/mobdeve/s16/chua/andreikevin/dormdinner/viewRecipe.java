@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -84,12 +85,7 @@ public class viewRecipe extends AppCompatActivity {
                 readyInMinutes.setText(String.valueOf(readyMin) + " mins");
                 recipeCredits.setText(credits);
                 for(int i = 0; i < extraName.size(); i++){
-                    //TODO fix image
-                    recipeIngredientsInPantry.add(new ingredientData(extraName.get(i)));
-                    //TODO Tama na ung nakukuhang pics pero mali ata etong part, inflater uses Glide and idk how to connect that here
-                    //TODO it needs to be inside this for loop kasi this creates the ingredient thingy
-                    //TODO add missedIngredients data + recipe mismo
-                    Picasso.with(viewRecipe.this).load(imgUrl.get(i)).into((ImageView) ingredient_view.findViewById(R.id.ingredientImage));
+                    recipeIngredientsInPantry.add(new ingredientData(extraName.get(i), imgUrl.get(i)));
                 }
 
                 db = new DBHandler(viewRecipe.this);
@@ -101,7 +97,7 @@ public class viewRecipe extends AppCompatActivity {
                     res = db.getData();
                     while (res.moveToNext()) {
                         if (res.getString(0).equals(recipeTitle)) {
-                            btnFavorite.setImageResource(R.drawable.favs_on);
+                            btnFavorite.setImageResource(R.drawable.btn_favorite_on);
                         } else {
                             btnFavorite.setImageResource(R.drawable.btn_favorite_off);
                         }
@@ -276,7 +272,7 @@ public class viewRecipe extends AppCompatActivity {
         if(res.getCount() < 1){
             db.addNewFav(recipeTitle);
             recipeData.setIsFavorite(true);
-            btnFavorite.setImageResource(R.drawable.favs_on);
+            btnFavorite.setImageResource(R.drawable.btn_favorite_on);
         } else {
             res = db.getData();
             while(res.moveToNext()){
@@ -288,7 +284,7 @@ public class viewRecipe extends AppCompatActivity {
                 else{
                     db.addNewFav(recipeTitle);
                     recipeData.setIsFavorite(true);
-                    btnFavorite.setImageResource(R.drawable.favs_on);
+                    btnFavorite.setImageResource(R.drawable.btn_favorite_on);
                 }
             }
         }

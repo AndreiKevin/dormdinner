@@ -53,7 +53,7 @@ public class fullRecipeApi {
                         originalIng.add(name);
                     }
                     for (ExtendedIngredient ingredient : extendedIngredients) {
-                        String url = ingredient.image;
+                        String url = "https://spoonacular.com/cdn/ingredients_100x100/"+ingredient.image;
                         imgUrl.add(url);
                     }
 
