@@ -89,17 +89,22 @@ public class viewRecipe extends AppCompatActivity {
 
                 db = new DBHandler(viewRecipe.this);
                 Cursor res = db.getData();
-                if(res.getCount() < 1){
+
+                if (res.getCount() < 1) {
                     btnFavorite.setImageResource(R.drawable.btn_favorite_off);
-                }
-                else {
-                    res = db.getData();
+                } else {
+                    boolean isRecipeFound = false;
+
                     while (res.moveToNext()) {
                         if (res.getString(0).equals(recipeTitle)) {
                             btnFavorite.setImageResource(R.drawable.btn_favorite_on);
-                        } else {
-                            btnFavorite.setImageResource(R.drawable.btn_favorite_off);
+                            isRecipeFound = true;
+                            break;
                         }
+                    }
+
+                    if (!isRecipeFound) {
+                        btnFavorite.setImageResource(R.drawable.btn_favorite_off);
                     }
                 }
 
@@ -273,18 +278,22 @@ public class viewRecipe extends AppCompatActivity {
             recipeData.setIsFavorite(true);
             btnFavorite.setImageResource(R.drawable.btn_favorite_on);
         } else {
-            res = db.getData();
-            while(res.moveToNext()){
-                if(res.getString(0).equals(recipeTitle)){
+            boolean isRecipeFound = false;
+
+            while (res.moveToNext()) {
+                if (res.getString(0).equals(recipeTitle)) {
                     db.deleteData(recipeTitle);
                     recipeData.setIsFavorite(false);
                     btnFavorite.setImageResource(R.drawable.btn_favorite_off);
+                    isRecipeFound = true;
+                    break; 
                 }
-                else{
-                    db.addNewFav(recipeTitle);
-                    recipeData.setIsFavorite(true);
-                    btnFavorite.setImageResource(R.drawable.btn_favorite_on);
-                }
+            }
+
+            if (!isRecipeFound) {
+                db.addNewFav(recipeTitle);
+                recipeData.setIsFavorite(true);
+                btnFavorite.setImageResource(R.drawable.btn_favorite_on);
             }
         }
 

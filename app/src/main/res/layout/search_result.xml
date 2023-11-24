@@ -32,14 +32,14 @@
 
     <TextView
         android:id="@+id/num_results"
-        android:layout_width="77dp"
+        android:layout_width="107dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView9"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="6dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="3dp"
-        android:layout_marginEnd="304dp"
+        android:layout_marginEnd="273dp"
         android:layout_toEndOf="@+id/numCount"
         android:fontFamily="@font/palmer_lake"
         android:text="results"
