@@ -3,6 +3,7 @@ package com.mobdeve.s16.chua.andreikevin.dormdinner;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -38,6 +39,33 @@ public class pantry extends AppCompatActivity {
         this.btnAddIngredients = (ImageButton) findViewById(R.id.btnAddIngredients);
         this.editAddIngredients = (EditText) findViewById(R.id.editAddIngredients);
 
+        TinyDB tinydb = new TinyDB(this);
+
+        if(tinydb.getListString("PantryIngredients").size() > 0) {
+            ingredientList = tinydb.getListString("PantryIngredients");
+            for(int i = 0; i < ingredientList.size(); i++){
+                LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                final View addView = layoutInflater.inflate(R.layout.new_ingredient_pantry, null);
+
+                final TextView text = (TextView) addView.findViewById(R.id.ingredientPantry);
+                text.setText(ingredientList.get(i));
+                addView.setTag(ingredientList.get(i));
+
+                ImageButton delete_ingredient = (ImageButton) addView.findViewById(R.id.btnTrashPantry);
+                final View.OnClickListener thisListener = new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ((LinearLayout) addView.getParent()).removeView(addView);
+                        ingredientList.remove(addView.getTag().toString());
+                        tinydb.putListString("PantryIngredients", ingredientList);
+                    }
+                };
+
+                delete_ingredient.setOnClickListener(thisListener);
+                ((LinearLayout) findViewById(R.id.addIngredientsParent)).addView(addView);
+            }
+        }
+
         btnAddIngredients.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,12 +74,15 @@ public class pantry extends AppCompatActivity {
 
                 final TextView text = (TextView) addView.findViewById(R.id.ingredientPantry);
                 text.setText(editAddIngredients.getText().toString());
+                addView.setTag(editAddIngredients.getText().toString());
 
                 ImageButton delete_ingredient = (ImageButton) addView.findViewById(R.id.btnTrashPantry);
                 final View.OnClickListener thisListener = new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         ((LinearLayout) addView.getParent()).removeView(addView);
+                        ingredientList.remove(addView.getTag().toString());
+                        tinydb.putListString("PantryIngredients", ingredientList);
                     }
                 };
 
@@ -64,6 +95,7 @@ public class pantry extends AppCompatActivity {
 
                 ((LinearLayout) findViewById(R.id.addIngredientsParent)).addView(addView);
                 editAddIngredients.setText("");
+                tinydb.putListString("PantryIngredients", ingredientList);
             }
         });
 
