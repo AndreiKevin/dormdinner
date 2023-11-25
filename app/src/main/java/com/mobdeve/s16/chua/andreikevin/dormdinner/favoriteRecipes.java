@@ -79,14 +79,14 @@ public class favoriteRecipes extends AppCompatActivity {
         db = new DBHandler(this);
         Cursor cursor = db.getData();
         while(cursor.moveToNext()){
-            items1.add(new Items(cursor.getString(1), false, cursor.getString(0)));
+            items1.add(new Items(cursor.getString(1), false, cursor.getString(0), cursor.getString(2)));
         }
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         Adapter adapter = new Adapter(this, items1, position -> {
             Items item = items1.get(position);
             Intent intent = new Intent(this, viewRecipe.class);
-            intent.putExtra("itemId", item.getId());
+            intent.putExtra("recipeID", item.getId());
             startActivity(intent);
         });
         recyclerView.setAdapter(adapter);

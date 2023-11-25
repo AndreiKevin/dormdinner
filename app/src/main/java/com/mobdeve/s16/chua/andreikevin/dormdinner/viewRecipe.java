@@ -276,7 +276,7 @@ public class viewRecipe extends AppCompatActivity {
         Cursor res = db.getData();
 
         if(res.getCount() < 1){
-            db.addNewFav(recipeTitle, recipeBannerUrl);
+            db.addNewFav(recipeTitle, recipeBannerUrl, recipeID);
             recipeData.setIsFavorite(true);
             btnFavorite.setImageResource(R.drawable.btn_favorite_on);
         } else {
@@ -288,12 +288,16 @@ public class viewRecipe extends AppCompatActivity {
                     recipeData.setIsFavorite(false);
                     btnFavorite.setImageResource(R.drawable.btn_favorite_off);
                     isRecipeFound = true;
+                    // refresh Activity
+                    Intent intent = new Intent(this, favoriteRecipes.class);
+                    startActivity(intent);
+                    finish();
                     break; 
                 }
             }
 
             if (!isRecipeFound) {
-                db.addNewFav(recipeTitle, recipeBannerUrl);
+                db.addNewFav(recipeTitle, recipeBannerUrl, recipeID);
                 recipeData.setIsFavorite(true);
                 btnFavorite.setImageResource(R.drawable.btn_favorite_on);
             }

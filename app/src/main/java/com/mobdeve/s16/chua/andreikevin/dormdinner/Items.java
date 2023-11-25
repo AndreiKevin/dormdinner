@@ -8,10 +8,11 @@ public class Items {
     int have;
     String recipeName;
 
-    public Items(String pic, Boolean pic2, String recipeName) {
+    public Items(String pic, Boolean pic2, String recipeName, String id) {
         this.pic = pic;
         this.pic2 = pic2;
         this.recipeName = recipeName;
+        this.id = id;
     }
 
     public String getPic() {
