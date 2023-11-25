@@ -37,6 +37,7 @@ public class viewRecipe extends AppCompatActivity {
     /* TODO:change logic later on */
     recipeData recipeData;
     DBHandler db;
+    String recipeBannerUrl;
 
     //TODO here
     String recipeID;
@@ -80,6 +81,7 @@ public class viewRecipe extends AppCompatActivity {
             public void onSuccess(String recipeNames, String imageUrl, int readyMin, String credits, List<String> extraName, List<String> imgUrl, String[] instructions) {
                 recipeName.setText(recipeNames);
                 recipeTitle = recipeNames;
+                recipeBannerUrl = imageUrl;
                 Picasso.with(viewRecipe.this).load(imageUrl).into(recipeBanner);
                 readyInMinutes.setText(String.valueOf(readyMin) + " mins");
                 recipeCredits.setText(credits);
@@ -178,7 +180,7 @@ public class viewRecipe extends AppCompatActivity {
     private void setDataToLayout(recipeData sampleRecipe) {
         this.recipeName.setText(sampleRecipe.getRecipeName());
         this.recipeCredits.setText(sampleRecipe.getRecipeCredits());
-        this.recipeBanner.setImageResource(sampleRecipe.getRecipeBanner());
+        //this.recipeBanner.setImageResource(sampleRecipe.getRecipeBanner());
         this.cntLikes.setText(sampleRecipe.getCntLikes()+" likes");
         this.cntIngredientsInPantry.setText(sampleRecipe.getCntIngredientsInPantry()+" in pantry");
         this.cntIngredientsMissing.setText(sampleRecipe.getCntIngredientsMissing()+" missing");
@@ -274,7 +276,7 @@ public class viewRecipe extends AppCompatActivity {
         Cursor res = db.getData();
 
         if(res.getCount() < 1){
-            db.addNewFav(recipeTitle);
+            db.addNewFav(recipeTitle, recipeBannerUrl);
             recipeData.setIsFavorite(true);
             btnFavorite.setImageResource(R.drawable.btn_favorite_on);
         } else {
@@ -291,7 +293,7 @@ public class viewRecipe extends AppCompatActivity {
             }
 
             if (!isRecipeFound) {
-                db.addNewFav(recipeTitle);
+                db.addNewFav(recipeTitle, recipeBannerUrl);
                 recipeData.setIsFavorite(true);
                 btnFavorite.setImageResource(R.drawable.btn_favorite_on);
             }

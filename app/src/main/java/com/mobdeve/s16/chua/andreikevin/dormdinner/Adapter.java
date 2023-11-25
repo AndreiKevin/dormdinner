@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<searchResultsViewHolder> {
@@ -37,7 +39,7 @@ public class Adapter extends RecyclerView.Adapter<searchResultsViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull searchResultsViewHolder holder, int position) {
         dbHandler = new DBHandler(context);
-        holder.pic.setImageResource(items.get(position).getPic());
+        Picasso.with(context).load(items.get(position).getPic()).into(holder.pic);
         holder.recipeName.setText(items.get(position).getRecipeName());
         holder.none.setText(Integer.toString(items.get(position).getNone()));
         holder.have.setText(Integer.toString(items.get(position).getHave()));

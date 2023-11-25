@@ -79,7 +79,7 @@ public class favoriteRecipes extends AppCompatActivity {
         db = new DBHandler(this);
         Cursor cursor = db.getData();
         while(cursor.moveToNext()){
-            items1.add(new Items(R.drawable.chicken_casserole, false, cursor.getString(0)));
+            items1.add(new Items(cursor.getString(1), false, cursor.getString(0)));
         }
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

@@ -2,23 +2,23 @@ package com.mobdeve.s16.chua.andreikevin.dormdinner;
 
 public class Items {
     String id;
-    int pic;
+    String pic;
     Boolean pic2;
     int none;
     int have;
     String recipeName;
 
-    public Items(int pic, Boolean pic2, String recipeName) {
+    public Items(String pic, Boolean pic2, String recipeName) {
         this.pic = pic;
         this.pic2 = pic2;
         this.recipeName = recipeName;
     }
 
-    public int getPic() {
+    public String getPic() {
         return pic;
     }
 
-    public void setPic(int pic) {
+    public void setPic(String pic) {
         this.pic = pic;
     }
 
