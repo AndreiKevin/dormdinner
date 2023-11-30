@@ -87,4 +87,20 @@ public class recipeData {
     public void setIsFavorite(boolean isFavorite) {
         this.isFavorite = isFavorite;
     }
+
+    @Override
+    public String toString() {
+        String recipeDataString = recipeName + "\n\nIngredients:\n";
+        for(int i = 0; i < recipeIngredientsInPantry.size(); i++) {
+            recipeDataString += recipeIngredientsInPantry.get(i).toString();
+        }
+        for(int i = 0; i < recipeIngredientsMissing.size(); i++) {
+            recipeDataString += recipeIngredientsMissing.get(i).toString();
+        }
+        recipeDataString += "\nInstructions:\n";
+        for(int i = 0; i < recipeInstructions.length; i++) {
+            recipeDataString += recipeInstructions[i] + "\n";
+        }
+        return recipeDataString;
+    }
 }

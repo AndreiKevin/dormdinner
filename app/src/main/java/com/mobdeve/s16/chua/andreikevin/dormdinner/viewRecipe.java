@@ -313,4 +313,14 @@ public class viewRecipe extends AppCompatActivity {
             btnFavorite.setImageResource(R.drawable.favs_on);
         }*/
     }
+
+    public void shareClicked(View v) {
+        Intent share = new Intent(Intent.ACTION_SEND);
+        share.setType("text/plain");
+        String shareBody = recipeData.toString();
+        String shareSubject = recipeTitle;
+        share.putExtra(Intent.EXTRA_SUBJECT, shareSubject);
+        share.putExtra(Intent.EXTRA_TEXT, shareBody);
+        startActivity(Intent.createChooser(share, "Share using"));
+    }
 }
