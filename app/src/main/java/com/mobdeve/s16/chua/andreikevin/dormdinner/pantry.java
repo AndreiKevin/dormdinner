@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,7 +35,7 @@ public class pantry extends AppCompatActivity {
         settingsClicked(settings);
 
         search = findViewById(R.id.search_btn_pantry);
-        searchClicked(search);
+        //searchClicked(search);
 
         this.btnAddIngredients = (ImageButton) findViewById(R.id.btnAddIngredients);
         this.editAddIngredients = (EditText) findViewById(R.id.editAddIngredients);
@@ -117,10 +118,16 @@ public class pantry extends AppCompatActivity {
     }
 
     public void searchClicked(View v) {
-        Intent goSearchResults = new Intent(getApplicationContext(), searchResult.class);
-        v.setOnClickListener(x -> {
-            goSearchResults.putExtra("ingredientList", ingredientList);
-            startActivity(goSearchResults);
-        });
+        if(ingredientList.size() > 0) {
+            Intent goSearchResults = new Intent(getApplicationContext(), searchResult.class);
+            v.setOnClickListener(x -> {
+                goSearchResults.putExtra("ingredientList", ingredientList);
+                startActivity(goSearchResults);
+            });
+        }
+        else {
+            Toast.makeText(this, "Oops! Make sure to add ingredients in your pantry first.",
+                    Toast.LENGTH_LONG).show();
+        }
     }
 }

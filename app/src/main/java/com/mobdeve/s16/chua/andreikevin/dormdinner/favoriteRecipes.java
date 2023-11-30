@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -105,5 +106,21 @@ public class favoriteRecipes extends AppCompatActivity {
         v.setOnClickListener(x -> {
             startActivity(goSettings);
         });
+    }
+
+    public void searchClickedFavorites(View v) {
+        TinyDB tinydb = new TinyDB(this);
+        ArrayList<String> ingredientList = tinydb.getListString("PantryIngredients");
+        if (ingredientList.size() > 0) {
+            Intent goSearchResults = new Intent(getApplicationContext(), searchResult.class);
+            v.setOnClickListener(x -> {
+                goSearchResults.putExtra("ingredientList", ingredientList);
+                startActivity(goSearchResults);
+            });
+        }
+        else {
+            Toast.makeText(this, "Oops! Make sure to add ingredients in your pantry first.",
+                    Toast.LENGTH_LONG).show();
+        }
     }
 }

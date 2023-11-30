@@ -74,7 +74,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.921"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/search_bar" />
+        app:srcCompat="@drawable/search_bar"
+        android:onClick="searchClickedFavorites" />
 
     <TextView
         android:id="@+id/textView"
