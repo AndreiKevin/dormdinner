@@ -2,12 +2,11 @@ package com.mobdeve.s16.chua.andreikevin.dormdinner;
 
 public class ingredientData {
     private String ingredientName;
-    private String ingredientAmt;
-    private Integer ingredientImage;
+    private Double ingredientAmt;
+    private String ingredientImage;
 
-    public ingredientData(String ingredientName, String ingredientAmt, Integer ingredientImage) {
+    public ingredientData(String ingredientName, String ingredientImage) {
         this.ingredientName = ingredientName;
-        this.ingredientAmt = ingredientAmt;
         this.ingredientImage = ingredientImage;
     }
 
@@ -15,11 +14,11 @@ public class ingredientData {
         return this.ingredientName;
     }
 
-    public String getIngredientAmt() {
+    public Double getIngredientAmt() {
         return this.ingredientAmt;
     }
 
-    public Integer getIngredientImage() {
+    public String getIngredientImage() {
         return this.ingredientImage;
     }
 }

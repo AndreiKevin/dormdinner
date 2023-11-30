@@ -13,14 +13,14 @@ public class recipeData {
     private Integer cntIngredientsMissing;
     private Integer readyInMinutes;
     private Integer cntLikes;
-    private ArrayList<String> recipeInstructions;
+    private String[] recipeInstructions;
     private ArrayList<ingredientData> recipeIngredientsInPantry;
     private ArrayList<ingredientData> recipeIngredientsMissing;
     private boolean isFavorite;
 
     public recipeData(String id, String recipeName, URL recipeSource, String recipeCredits,
                       Integer recipeBanner, Integer cntIngredientsInPantry, Integer cntIngredientsMissing, Integer readyInMinutes, Integer cntLikes,
-                      ArrayList<String> recipeInstructions, ArrayList<ingredientData> recipeIngredientsInPantry, ArrayList<ingredientData> recipeIngredientsMissing, boolean isFavorite) {
+                      String[] recipeInstructions, ArrayList<ingredientData> recipeIngredientsInPantry, ArrayList<ingredientData> recipeIngredientsMissing, boolean isFavorite) {
         this.id = id;
         this.recipeName = recipeName;
         this.recipeSource = recipeSource;
@@ -68,7 +68,7 @@ public class recipeData {
         return this.cntLikes;
     }
 
-    public ArrayList<String> getRecipeInstructions() {
+    public String[] getRecipeInstructions() {
         return this.recipeInstructions;
     }
 

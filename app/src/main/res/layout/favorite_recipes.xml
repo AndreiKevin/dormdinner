@@ -6,25 +6,16 @@
     android:layout_height="match_parent"
     android:background="#EDF0EB">
 
-    <Button
-        android:id="@+id/delete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="#00FFFFFF"
-        android:text="delete"
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="110dp"
+        android:layout_height="242dp"
+        android:layout_marginTop="60dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recipeNameFavs" />
-
-    <TextView
-        android:id="@+id/recipeNameFavs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="452dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.087"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/lemon_2" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/favsRecycler"
@@ -83,7 +74,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.921"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/search_bar"/>
+        app:srcCompat="@drawable/search_bar" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"

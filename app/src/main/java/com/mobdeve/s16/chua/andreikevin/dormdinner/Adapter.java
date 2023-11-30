@@ -1,17 +1,13 @@
-package com.mobdeve.s16.chua.andreikevin.dormdinner.recylerViewAdapter;
+package com.mobdeve.s16.chua.andreikevin.dormdinner;
 
 import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mobdeve.s16.chua.andreikevin.dormdinner.R;
-import com.mobdeve.s16.chua.andreikevin.dormdinner.database.DBHandler;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -19,6 +15,7 @@ public class Adapter extends RecyclerView.Adapter<searchResultsViewHolder> {
 
     Context context;
     List<Items> items;
+
     private ItemClickListener itemClickListener;
 
     DBHandler dbHandler;
@@ -42,7 +39,7 @@ public class Adapter extends RecyclerView.Adapter<searchResultsViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull searchResultsViewHolder holder, int position) {
         dbHandler = new DBHandler(context);
-        holder.pic.setImageResource(items.get(position).getPic());
+        Picasso.with(context).load(items.get(position).getPic()).into(holder.pic);
         holder.recipeName.setText(items.get(position).getRecipeName());
         holder.none.setText(Integer.toString(items.get(position).getNone()));
         holder.have.setText(Integer.toString(items.get(position).getHave()));
@@ -52,9 +49,6 @@ public class Adapter extends RecyclerView.Adapter<searchResultsViewHolder> {
         dbHandler = new DBHandler(this.context);
 
         Items itemlist = items.get(position);
-        holder.pic2.setChecked(items.get(position).isToggled());
-        holder.pic2.setOnCheckedChangeListener(null);
-        holder.pic2.setChecked(itemlist.isToggled());
 
 
         /*holder.pic2.setOnClickListener(v -> {
