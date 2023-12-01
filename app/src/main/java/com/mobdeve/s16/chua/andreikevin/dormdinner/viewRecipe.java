@@ -46,6 +46,7 @@ public class viewRecipe extends AppCompatActivity {
     private fullRecipeApi recipeApiClient;
     private ArrayList<Integer> amounts;
     String recipeTitle;
+    ArrayList<String> ingredientList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,9 +73,13 @@ public class viewRecipe extends AppCompatActivity {
         likes = getIntent().getIntExtra("likes", 0);
         usedCnt = getIntent().getIntExtra("usedCount", 0);
         missedCnt = getIntent().getIntExtra("missedCount", 0);
+        ingredientList = getIntent().getStringArrayListExtra("ingredientList");
 
         Intent intent = getIntent();
         recipeApiClient = new fullRecipeApi();
+
+        TinyDB tinydb = new TinyDB(this);
+        ArrayList<String> ingredientList = tinydb.getListString("PantryIngredients");
 
         recipeApiClient.searchRecipesByRecipe(recipeID, new recipeResponseCallback() {
             @Override
@@ -86,7 +91,12 @@ public class viewRecipe extends AppCompatActivity {
                 readyInMinutes.setText(String.valueOf(readyMin) + " mins");
                 recipeCredits.setText(credits);
                 for(int i = 0; i < extraName.size(); i++){
-                    recipeIngredientsInPantry.add(new ingredientData(extraName.get(i), imgUrl.get(i)));
+                    if(containsWord(extraName.get(i), ingredientList)){
+                        recipeIngredientsInPantry.add(new ingredientData(extraName.get(i), imgUrl.get(i)));
+                    }
+                    else {
+                        recipeIngredientsMissing.add(new ingredientData(extraName.get(i), imgUrl.get(i)));
+                    }
                 }
 
                 db = new DBHandler(viewRecipe.this);
@@ -322,5 +332,16 @@ public class viewRecipe extends AppCompatActivity {
         share.putExtra(Intent.EXTRA_SUBJECT, shareSubject);
         share.putExtra(Intent.EXTRA_TEXT, shareBody);
         startActivity(Intent.createChooser(share, "Share using"));
+    }
+
+    private boolean containsWord(String sentence, ArrayList<String> wordsToCheck) {
+        sentence = sentence.toLowerCase();
+        wordsToCheck.replaceAll(String::toLowerCase);
+        for (String word : wordsToCheck) {
+            if (sentence.contains(word)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
