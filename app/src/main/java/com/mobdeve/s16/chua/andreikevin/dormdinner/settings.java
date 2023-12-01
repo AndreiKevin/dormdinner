@@ -24,28 +24,10 @@ public class settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
 
-        this.sliderSettings = (SeekBar) findViewById(R.id.sliderSettings);
-        this.sliderValue = (TextView) findViewById(R.id.sliderValue);
+        //this.sliderSettings = (SeekBar) findViewById(R.id.sliderSettings);
+        //this.sliderValue = (TextView) findViewById(R.id.sliderValue);
         this.btnAddAvoidIngredients = (ImageButton) findViewById(R.id.btnAddAvoidIngredients);
         this.editAddAvoidIngredients = (EditText) findViewById(R.id.editAddAvoidIngredients);
-
-        sliderSettings.setOnSeekBarChangeListener(
-                new SeekBar.OnSeekBarChangeListener() {
-                    // When the progress value has changed
-                    @Override
-                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                        sliderValue.setText(String.valueOf(progress));
-                    }
-
-                    @Override
-                    public void onStartTrackingTouch(SeekBar seekBar) {
-                    }
-
-                    @Override
-                    public void onStopTrackingTouch(SeekBar seekBar) {
-                    }
-                }
-                );
 
         btnAddAvoidIngredients.setOnClickListener(new View.OnClickListener() {
             @Override
