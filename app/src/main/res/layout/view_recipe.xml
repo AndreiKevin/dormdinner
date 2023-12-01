@@ -27,7 +27,6 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/t_ramillas"
-                android:text="TextView"
                 android:textColor="@color/black"
                 android:textSize="34sp" />
 
@@ -39,7 +38,6 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="25dp"
                 android:fontFamily="@font/t_ramillas"
-                android:text="TextView"
                 android:textColor="@color/gray"
                 android:textSize="16sp" />
 
@@ -47,8 +45,7 @@
                 android:id="@+id/recipeBanner"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/sample_recipe_1" />
+                android:scaleType="centerCrop" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -77,7 +74,6 @@
                     android:layout_weight="1"
                     android:fontFamily="sans-serif"
                     android:gravity="center_vertical"
-                    android:text="0 likes"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -159,7 +155,6 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center_horizontal"
-                            android:text="4 in pantry"
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -171,7 +166,6 @@
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:gravity="center_horizontal"
-                            android:text="12 missing"
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -182,7 +176,6 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center_horizontal"
-                            android:text="56 minutes"
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             android:textStyle="bold" />
