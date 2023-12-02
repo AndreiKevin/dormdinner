@@ -334,6 +334,10 @@ public class viewRecipe extends AppCompatActivity {
         startActivity(Intent.createChooser(share, "Share using"));
     }
 
+    public void printClicked(View v) {
+        generatePDF(v);
+    }
+
     private boolean containsWord(String sentence, ArrayList<String> wordsToCheck) {
         sentence = sentence.toLowerCase();
         wordsToCheck.replaceAll(String::toLowerCase);
@@ -343,5 +347,22 @@ public class viewRecipe extends AppCompatActivity {
             }
         }
         return false;
+    }
+
+    private void generatePDF(View view)
+    {
+        // TODO Auto-generated method stub
+        String filename = "david";
+        String filecontent = "Contenido";
+        PrintHelper fop = new PrintHelper();
+        Boolean isSuccessful = fop.write(filename, filecontent);
+        if (isSuccessful) {
+            Toast.makeText(getApplicationContext(),
+                            filename + ".pdf created", Toast.LENGTH_SHORT)
+                    .show();
+        } else {
+            Toast.makeText(getApplicationContext(), "I/O error",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 }
