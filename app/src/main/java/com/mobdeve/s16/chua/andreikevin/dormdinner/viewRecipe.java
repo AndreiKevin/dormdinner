@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
+import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -355,7 +356,12 @@ public class viewRecipe extends AppCompatActivity {
         String filename = "david";
         String filecontent = "Contenido";
         PrintHelper fop = new PrintHelper();
-        Boolean isSuccessful = fop.write(filename, filecontent);
+        Boolean isSuccessful = false;
+        try {
+            isSuccessful = fop.write(filename, filecontent);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         if (isSuccessful) {
             Toast.makeText(getApplicationContext(),
                             filename + ".pdf created", Toast.LENGTH_SHORT)
