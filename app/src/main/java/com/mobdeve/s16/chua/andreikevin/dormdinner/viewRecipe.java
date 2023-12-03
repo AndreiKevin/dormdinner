@@ -350,11 +350,9 @@ public class viewRecipe extends AppCompatActivity {
         return false;
     }
 
-    private void generatePDF(View view)
-    {
-        // TODO Auto-generated method stub
-        String filename = "david";
-        String filecontent = "Contenido";
+    private void generatePDF(View view) {
+        String filename = recipeData.getRecipeName().replaceAll("[,\\s]+", "");;
+        String filecontent = recipeData.toString();
         PrintHelper fop = new PrintHelper();
         Boolean isSuccessful = false;
         try {
@@ -363,12 +361,9 @@ public class viewRecipe extends AppCompatActivity {
             throw new RuntimeException(e);
         }
         if (isSuccessful) {
-            Toast.makeText(getApplicationContext(),
-                            filename + ".pdf created", Toast.LENGTH_SHORT)
-                    .show();
+            Toast.makeText(getApplicationContext(),filename + ".pdf created and downloaded.", Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(getApplicationContext(), "I/O error",
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Oops! Failed to download PDF file.", Toast.LENGTH_LONG).show();
         }
     }
 }
