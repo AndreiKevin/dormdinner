@@ -83,7 +83,7 @@ public class viewRecipe extends AppCompatActivity {
 
         recipeApiClient.searchRecipesByRecipe(recipeID, new recipeResponseCallback() {
             @Override
-            public void onSuccess(String recipeNames, String imageUrl, int readyMin, String credits, List<String> extraName, List<String> imgUrl, String[] instructions) {
+            public void onSuccess(String recipeNames, String imageUrl, int readyMin, String credits, List<String> extraName, List<String> imgUrl, List<String> instructions) {
                 recipeName.setText(recipeNames);
                 recipeTitle = recipeNames;
                 recipeBannerUrl = imageUrl;

@@ -39,16 +39,15 @@ public class fullRecipeApi {
                 if (response.isSuccessful()) {
                     FullRecipe recipes = response.body();
                     String title, imageUrls, creditsText;
-                    String[] instructions;
+                    List<String> instructions = new ArrayList<>();;
                     int readyInMinutes;
 
                     title = recipes.getName();
-                    instructions = recipes.getInstructions().split("</li><li>");
-                    for (int i = 0; i < instructions.length; i++) {
-                        int indexOfSpace = instructions[i].indexOf(' ');
-                        instructions[i] = instructions[i].substring(indexOfSpace + 1);
-                        instructions[i] = instructions[i].replace("</li></ol>", "");
+
+                    for(int i = 0; i < recipes.getInstructions().get(0).steps.size(); i++) {
+                        instructions.add(recipes.getInstructions().get(0).steps.get(i).step);
                     }
+
                     imageUrls = recipes.getImageUrl();
                     readyInMinutes = recipes.getReadyInMinutes();
                     creditsText = recipes.getCredits();

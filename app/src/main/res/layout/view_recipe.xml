@@ -235,7 +235,7 @@
                     android:fontFamily="@font/palmer_lake"
                     android:text="Missing and Additional Ingredients When Searched"
                     android:textAlignment="viewStart"
-                    android:textSize="25sp" />
+                    android:textSize="23sp" />
             </LinearLayout>
 
             <Space
