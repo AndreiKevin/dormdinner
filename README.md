@@ -1,5 +1,39 @@
 # dormdinner
-MOBDEVE MCO1
+Machine Project in MOBDEVE(Mobile Development)
+
+
+## Authors
+- Ang, Audric
+- Chua, Andrei
+- Griffin, Faith
+
+
+## Application Description
+In the fast-paced life of college students, dormdinner comes to the rescue, simplifying meal preparations and
+reducing waste. Inspired by the trendy Dorm Dinner videos on TikTok, this application is specifically designed
+to aid college students in cooking up a delightful meal with what's readily available in their dorms. It's pretty
+straightforward - users simply log the food items or ingredients on hand, and dormdinner provides recipes!
+dormdinner is about turning the constraints of time and resources into a culinary exploration that's both
+practical and delightful.
+
+
+## Service and API used
+
+### Local Database (SQLite)
+  Used to store favorite recipes of a user
+### **[Spoonacular API](https://spoonacular.com/food-api)**
+  Used to generate recipes from ingredients or food items listed by a user
+
+## Implemented Features
+| Feature           |                                                                Description                                                                 |
+|:------------------|:------------------------------------------------------------------------------------------------------------------------------------------:|
+| Add to Pantry     |                                   The user can list ingredients/food items currently available to them.                                    |
+| Search Recipe     |                  The list of ingredients/food in their pantry will use the Spoonacular API to generate recipes for them.                   |
+| View Recipe       | Once a user selects a recipe, the app will provide the ingredients and the cooking/preparation processes involved in that specific recipe. |
+| Favorite Recipe   |                                               The user can store recipes that they enjoyed.                                                |
+| Unfavorite Recipe |                                     The user can remove recipes from their favorites list collection.                                      |
+| Share Recipe Text |                                       The user can share the recipe in text format with other apps.                                        |
+
 
 ## Development
 
