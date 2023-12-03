@@ -94,7 +94,8 @@
                     android:background="@null"
                     android:paddingLeft="6sp"
                     android:paddingRight="6sp"
-                    android:src="@drawable/btn_print" />
+                    android:src="@drawable/btn_print"
+                    android:onClick="printClicked"/>
 
             </LinearLayout>
 
