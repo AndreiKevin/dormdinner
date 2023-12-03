@@ -7,6 +7,15 @@
     android:background="#EDF0EB">
 
     <ImageView
+        android:layout_width="302dp"
+        android:layout_height="198dp"
+        android:layout_marginStart="56dp"
+        app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
+        app:layout_constraintStart_toEndOf="@+id/editAddIngredients"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cake" />
+
+    <ImageView
         android:id="@+id/imageView7"
         android:layout_width="479dp"
         android:layout_height="74dp"
@@ -66,8 +75,6 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/settings"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -83,18 +90,6 @@
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <ImageButton
-        android:id="@+id/settings"
-        android:layout_width="38dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="16dp"
-        android:background="#00FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.932"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/settings" />
 
     <EditText
         android:id="@+id/editAddIngredients"
@@ -116,9 +111,9 @@
         android:id="@+id/btnAddIngredients"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="112dp"
         android:layout_marginEnd="163dp"
-        android:layout_marginBottom="9dp"
+        android:layout_marginBottom="1dp"
         android:background="#00FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"

@@ -14,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class fullRecipeApi {
     private static final String BASE_URL = "https://api.spoonacular.com/";
-    private static final String API_KEY = "1b06c8f4db534a77b93b46ffcb4520c1";
+    private static final String API_KEY = "a284a551561946fabbb45092a06f6376";
 
     private Retrofit retrofit;
 
@@ -39,16 +39,15 @@ public class fullRecipeApi {
                 if (response.isSuccessful()) {
                     FullRecipe recipes = response.body();
                     String title, imageUrls, creditsText;
-                    String[] instructions;
+                    List<String> instructions = new ArrayList<>();;
                     int readyInMinutes;
 
                     title = recipes.getName();
-                    instructions = recipes.getInstructions().split("</li><li>");
-                    for (int i = 0; i < instructions.length; i++) {
-                        int indexOfSpace = instructions[i].indexOf(' ');
-                        instructions[i] = instructions[i].substring(indexOfSpace + 1);
-                        instructions[i] = instructions[i].replace("</li></ol>", "");
+
+                    for(int i = 0; i < recipes.getInstructions().get(0).steps.size(); i++) {
+                        instructions.add(recipes.getInstructions().get(0).steps.get(i).step);
                     }
+
                     imageUrls = recipes.getImageUrl();
                     readyInMinutes = recipes.getReadyInMinutes();
                     creditsText = recipes.getCredits();

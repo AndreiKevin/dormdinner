@@ -2,6 +2,7 @@ package com.mobdeve.s16.chua.andreikevin.dormdinner;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 public class recipeData {
     private String id;
@@ -13,14 +14,14 @@ public class recipeData {
     private Integer cntIngredientsMissing;
     private Integer readyInMinutes;
     private Integer cntLikes;
-    private String[] recipeInstructions;
+    private List<String> recipeInstructions;
     private ArrayList<ingredientData> recipeIngredientsInPantry;
     private ArrayList<ingredientData> recipeIngredientsMissing;
     private boolean isFavorite;
 
     public recipeData(String id, String recipeName, URL recipeSource, String recipeCredits,
                       Integer recipeBanner, Integer cntIngredientsInPantry, Integer cntIngredientsMissing, Integer readyInMinutes, Integer cntLikes,
-                      String[] recipeInstructions, ArrayList<ingredientData> recipeIngredientsInPantry, ArrayList<ingredientData> recipeIngredientsMissing, boolean isFavorite) {
+                      List<String> recipeInstructions, ArrayList<ingredientData> recipeIngredientsInPantry, ArrayList<ingredientData> recipeIngredientsMissing, boolean isFavorite) {
         this.id = id;
         this.recipeName = recipeName;
         this.recipeSource = recipeSource;
@@ -68,7 +69,7 @@ public class recipeData {
         return this.cntLikes;
     }
 
-    public String[] getRecipeInstructions() {
+    public List<String> getRecipeInstructions() {
         return this.recipeInstructions;
     }
 
@@ -98,8 +99,8 @@ public class recipeData {
             recipeDataString += recipeIngredientsMissing.get(i).toString();
         }
         recipeDataString += "\nInstructions:\n";
-        for(int i = 0; i < recipeInstructions.length; i++) {
-            recipeDataString += recipeInstructions[i] + "\n";
+        for(int i = 0; i < recipeInstructions.size(); i++) {
+            recipeDataString += recipeInstructions.get(i) + "\n";
         }
         return recipeDataString;
     }

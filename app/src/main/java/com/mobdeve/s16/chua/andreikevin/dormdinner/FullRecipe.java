@@ -33,10 +33,10 @@ public class FullRecipe {
     @SerializedName("extendedIngredients")
     private List<ExtendedIngredient> extendedIngredients;
 
-    @SerializedName("instructions")
-    private String instructions;
+    @SerializedName("analyzedInstructions")
+    private List<Instruction> instructions;
 
-    public String getInstructions() { return instructions; }
+    public List<Instruction> getInstructions() { return instructions; }
 
     public int getReadyInMinutes() {
         return readyInMinutes;

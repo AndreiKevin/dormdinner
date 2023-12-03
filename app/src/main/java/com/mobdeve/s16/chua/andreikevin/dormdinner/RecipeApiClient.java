@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RecipeApiClient {
     private static final String BASE_URL = "https://api.spoonacular.com/";
-    private static final String API_KEY = "1b06c8f4db534a77b93b46ffcb4520c1";
+    private static final String API_KEY = "a284a551561946fabbb45092a06f6376";
     private static final String number = "20";
 
     private RecipeApiService apiService;

@@ -31,9 +31,6 @@ public class pantry extends AppCompatActivity {
         favs_on_btn = findViewById(R.id.favoriteBtn_off);
         favsClicked(favs_on_btn);
 
-        settings = findViewById(R.id.settings);
-        settingsClicked(settings);
-
         search = findViewById(R.id.search_btn_pantry);
         //searchClicked(search);
 
@@ -107,13 +104,6 @@ public class pantry extends AppCompatActivity {
         v.setOnClickListener(x -> {
             startActivity(goFavs);
             this.finish();
-        });
-    }
-
-    public void settingsClicked(View v) {
-        Intent goSettings = new Intent(getApplicationContext(), settings.class);
-        v.setOnClickListener(x -> {
-            startActivity(goSettings);
         });
     }
 
