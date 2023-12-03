@@ -32,9 +32,6 @@ public class favoriteRecipes extends AppCompatActivity {
         pantry_on_btn = findViewById(R.id.pantryBtn_off);
         pantryClicked(pantry_on_btn);
 
-        settings = findViewById(R.id.settings);
-        settingsClicked(settings);
-
         //TODO experimental code:
         /*txt = findViewById(R.id.recipeNameFavs);
         delete = findViewById(R.id.delete);
@@ -84,7 +81,7 @@ public class favoriteRecipes extends AppCompatActivity {
         }
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        Adapter adapter = new Adapter(this, items1, position -> {
+        AdapterFavorites adapter = new AdapterFavorites(this, items1, position -> {
             Items item = items1.get(position);
             Intent intent = new Intent(this, viewRecipe.class);
             intent.putExtra("recipeID", item.getId());
@@ -98,13 +95,6 @@ public class favoriteRecipes extends AppCompatActivity {
         v.setOnClickListener(x -> {
             startActivity(goPantry);
             this.finish();
-        });
-    }
-
-    public void settingsClicked(View v){
-        Intent goSettings = new Intent(getApplicationContext(), settings.class);
-        v.setOnClickListener(x -> {
-            startActivity(goSettings);
         });
     }
 
