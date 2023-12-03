@@ -52,8 +52,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginBottom="8dp"
                 android:layout_marginEnd="20dp"
+                android:layout_marginBottom="8dp"
                 android:orientation="horizontal">
 
                 <ImageButton
@@ -82,10 +82,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:background="@null"
+                    android:onClick="shareClicked"
                     android:paddingLeft="6sp"
                     android:paddingRight="6sp"
-                    android:src="@drawable/btn_share"
-                    android:onClick="shareClicked"/>
+                    android:src="@drawable/btn_share" />
 
                 <ImageButton
                     android:id="@+id/btnPrint"
@@ -204,10 +204,10 @@
                     android:id="@+id/ingredientsInPantry"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center_vertical"
                     android:layout_marginStart="12dp"
                     android:fontFamily="@font/palmer_lake"
-                    android:text="Pantry Ingredients"
+                    android:text="Pantry Ingredients When Searched"
+                    android:textAlignment="viewStart"
                     android:textSize="28sp" />
             </LinearLayout>
 
@@ -229,13 +229,13 @@
 
                 <TextView
                     android:id="@+id/ingredientsMissing"
-                    android:layout_width="wrap_content"
+                    android:layout_width="330dp"
                     android:layout_height="match_parent"
-                    android:gravity="center_vertical"
                     android:layout_marginStart="12dp"
                     android:fontFamily="@font/palmer_lake"
-                    android:text="Missing Ingredients"
-                    android:textSize="28sp" />
+                    android:text="Missing and Additional Ingredients When Searched"
+                    android:textAlignment="viewStart"
+                    android:textSize="25sp" />
             </LinearLayout>
 
             <Space
